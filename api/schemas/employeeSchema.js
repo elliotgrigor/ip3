@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+const accessSchema = require('./accessSchema');
+const contactSchema = require('./contactSchema');
 const dailyHoursSchema = require('./dailyHoursSchema');
 
 const employeeSchema = new Schema({
@@ -26,28 +28,12 @@ const employeeSchema = new Schema({
   profilePic: {
     type: String,
   },
-  access: {
-    level: {
-      type: Number,
-      required: true,
-      min: 1,
-      max: 4,
-    }
-  },
+  access: accessSchema,
   password: {
     type: String,
     required: true,
   },
-  contact: {
-    address: {
-      houseNumber: { type: Number, required: true },
-      street: { type: String, required: true },
-      postCode: { type: String, required: true },
-      city: { type: String, required: true },
-    },
-    phone: { type: String, required: true },
-    email: { type: String, required: true },
-  },
+  contact: contactSchema,
   daysWorked: [dailyHoursSchema],
   payRate: {},
 });
