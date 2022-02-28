@@ -8,4 +8,4 @@ const dailyHoursSchema = new Schema({
   dailyHours: { type: Number, required: true },
 });
 
-export default dailyHoursSchema;
+module.exports = dailyHoursSchema;

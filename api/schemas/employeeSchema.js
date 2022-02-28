@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+const dailyHoursSchema = require('./dailyHoursSchema');
+
 const employeeSchema = new Schema({
   staffNumber: {
     type: Number,
@@ -46,8 +48,8 @@ const employeeSchema = new Schema({
     phone: { type: String, required: true },
     email: { type: String, required: true },
   },
-  daysWorked: [dailyHours],
+  daysWorked: [dailyHoursSchema],
   payRate: {},
 });
 
-export default employeeSchema;
+module.exports = employeeSchema;
