@@ -1,7 +1,5 @@
 # Integrated Project 3
 
-# Test Comment - Devlin
-
 ## How to use Git via a command line
 
 **To use Git Cli you would need to use GitBash for Windows or the terminal for Mac/Linux**
