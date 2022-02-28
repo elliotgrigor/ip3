@@ -8,7 +8,7 @@ const payslipSchema = require('./payslipSchema');
 
 const employeeSchema = new Schema({
   staffNumber: {
-    type: Number,
+    type: String,
     required: true,
   },
   firstName: {
