@@ -1,5 +1,7 @@
 require('dotenv').config()
 
+const express = require('express');
+const app = express();
 const mongoose = require('mongoose');
 
 main().catch(err => console.log(err));
@@ -10,3 +12,7 @@ async function main() {
     { useNewUrlParser: true },
   );
 }
+
+app.listen(process.env.PORT, process.env.IP, () => {
+  console.log(`API running on http://${process.env.IP}:${process.env.PORT}`);
+});
