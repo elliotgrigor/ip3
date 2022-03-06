@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.json({ data: "employee_data" });
-});
+const controller = require('../controllers/apiController');
+
+router.get('/', controller.getAllEmployees);
 
 module.exports = router;
