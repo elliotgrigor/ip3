@@ -15,7 +15,7 @@ async function main() {
   );
 }
 
-app.use('/', routes);
+app.use('/api/v1', routes);
 
 app.listen(process.env.PORT, process.env.IP, () => {
   console.log(`API running on http://${process.env.IP}:${process.env.PORT}`);
