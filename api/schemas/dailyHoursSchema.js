@@ -6,6 +6,7 @@ const dailyHoursSchema = new Schema({
   startTime: { type: Date, required: true },
   finishTime: { type: Date, required: true },
   dailyHours: { type: Number, required: true },
+  extra: { _id: false },
 });
 
 module.exports = dailyHoursSchema;

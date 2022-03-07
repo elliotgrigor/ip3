@@ -7,7 +7,8 @@ const accessSchema = new Schema({
     required: true,
     min: 1,
     max: 4,
-  }
+  },
+  extra: { _id: false },
 });
 
 module.exports = accessSchema;

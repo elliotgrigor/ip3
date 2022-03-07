@@ -10,6 +10,7 @@ const contactSchema = new Schema({
   },
   phone: { type: String, required: true },
   email: { type: String, required: true },
+  extra: { _id: false },
 });
 
 module.exports = contactSchema;

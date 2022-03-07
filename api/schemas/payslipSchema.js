@@ -26,7 +26,8 @@ const payslipSchema = new Schema({
   issueDate: {
     type: Date,
     required: true,
-  }
+  },
+  extra: { _id: false },
 });
 
 module.exports = payslipSchema;
