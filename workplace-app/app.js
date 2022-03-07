@@ -5,6 +5,7 @@ const app = express();
 
 const routes = require('./routes/pageRoutes');
 
+app.use(express.static('public'));
 app.set('view engine', 'pug');
 
 app.use('/', routes);
