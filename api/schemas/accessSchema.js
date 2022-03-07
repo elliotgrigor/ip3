@@ -8,7 +8,6 @@ const accessSchema = new Schema({
     min: 1,
     max: 4,
   },
-  extra: { _id: false },
-});
+}, { _id: false });
 
 module.exports = accessSchema;
