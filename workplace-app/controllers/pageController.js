@@ -1,4 +1,9 @@
 
 exports.home = (req, res) => {
-  res.render('index', {});
+  const loggedInUser = {firstName: "Devlin", employeeType: "Manager"};
+  res.render('index', {data: loggedInUser});
+}
+
+exports.login = (req, res) => {
+  res.render('login', {});
 }

@@ -1,1 +1,217 @@
-* {}
+.blue {
+    color: blue;
+}
+
+.logIn-table {
+    margin: 0 auto;
+}
+
+.large-text {
+    font-size: 48px;
+}
+
+.black-text {
+    color: hsl(219, 100%, 5%);
+}
+
+.black-image {
+    fill: hsl(219, 100%, 5%);
+}
+
+.white-image {
+    fill: hsl(219, 100%, 98%);
+}
+
+.medium-image {
+    width: 100px;
+    height: 100px;
+}
+
+.small-image {
+    width: 12px;
+    height: 12px;
+}
+
+.large-image {
+    width: 48px;
+    height: 48px;
+}
+
+.logInCard {
+    border-color: cornflowerblue;
+    border-style: solid;
+    background-color:cornflowerblue;
+    text-align: center;
+    padding: 2px 16px;
+    width: 40%;
+    margin: auto;
+    padding: 10px;
+    height: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.punchInButtonContainer {
+    display: block;
+    align-items: left;
+    padding-top: 100px;
+    padding-left: 100px;
+}
+
+.punchInButton {
+    background-color: cornflowerblue;
+    color: white;
+    border: none;
+    border-radius: .125em;
+    padding: 1em 2.5em;
+    font-weight: bold;
+    font-size: large;
+
+    width: 200px;
+    height: 95px;
+
+    cursor: pointer;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+form {
+    /*padding: 2px 16px;
+    display: inline-block;
+    margin-top: 25%; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+label {
+    font-weight: 700;
+}
+
+.testing {
+    text-align: center;
+}
+
+input[type=submit] {
+    background-color: #e7e7e7; 
+    color: black;
+    font-size: 16px;
+}
+
+input[type=submit]:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.blue-background {
+    background: linear-gradient(75deg, rgb(58, 117, 219), rgb(40, 120, 255));
+}
+
+.medium-text {
+    font-size: 24px;
+}
+
+.white-text {
+    color: hsl(219, 100%, 98%);
+}
+
+.item-row-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    scroll-snap-type: x mandatory;
+}
+
+.medium-space {
+    padding-top: 24px;
+}
+
+.list-left-medium-space > div:not(:first-child) {
+    margin-left: 32px;
+}
+
+.list-left-medium-space > a:not(:first-child) {
+    margin-left: 32px;
+}
+
+.card-shortcut {
+    width: 200px;
+    height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+
+    border-radius: 10px;
+    transition: transform 0.1s ease-in-out;
+
+    text-decoration: none;
+}
+
+.card-shortcut:hover {
+    transform: translateY(-7px);
+}
+
+#page-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-content: center;
+
+    width: calc(100vw - 100px);
+    height: calc(100vh - padding);
+
+    padding: 40px;
+
+    border-radius: 0px 10px 10px 0px;
+}
+
+#taskbar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: center;
+
+    width: 100px;
+    height: 100vh;
+
+    border-radius: 0px 10px 10px 0px;
+}
+
+#taskbar-container > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+
+    width: 60px;
+    height: 60px;
+
+    padding-top: 20px;
+}
+
+#taskbar-container > a > img {
+    width: 50px;
+}
+
+#taskbar-container > a:first-child {
+    padding-bottom: 40px;
+}
+
+

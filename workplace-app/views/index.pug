@@ -1,3 +1,30 @@
-include includes/header.pug
 
-h1 Hello, World!
+
+mixin card(cardData)
+    a(href=cardData.link class="card-shortcut title-text medium-text white-text blue-background")
+        img(class="card-large-image" src=cardData.imgLocation class="large-image")
+        p= cardData.title
+
+- var payslipsCard = {title: "Payslips", imgLocation: "/res/piggybank.svg", link: "/payslips"}
+- var rotaCard = {title: "Rota", imgLocation: "/res/calendar.svg", link: "/rota"}
+- var myDetailsCard = {title: "My Details", imgLocation: "/res/person.svg", link: "/profile"}
+- var punchInCard = {title: "Punch In/Out", imgLocation: "/res/clock.svg", link: "/timeManagement"}
+- var employeesCard = {title: "Employees", imgLocation: "/res/employees.svg", link: "/employeeList"}
+
+include includes/header.pug
+div#page-container 
+    include includes/nav
+    div#content-container
+        div(class="title-text large-text black-text").
+            Welcome to your G9 #{data.employeeType} dashboard, #{data.firstName}!
+        div(class="item-row-container medium-space list-left-medium-space")
+            if data.employeeType == "Employee"
+                +card(payslipsCard)
+                +card(myDetailsCard)
+                +card(punchInCard)
+            if data.employeeType == "Manager"
+                +card(payslipsCard)
+                +card(myDetailsCard)
+                +card(punchInCard)
+                +card(rotaCard)
+                +card(employeesCard)

@@ -1,0 +1,16 @@
+include includes/header.pug
+div.testing 
+    img.medium-image(src="../res/logo-blue.png" alt="Logo" style="padding: 5px")
+div.logInCard
+    h3 Please log in to continue
+    form(action="post" method="/login") 
+        label(for="userID") ID Number: 
+        br
+        input(type="number" name="userID" id="userID")
+        br
+        label(for="password") Password: 
+        br
+        input(type="password" name="password" id="password")
+        br
+        br
+        input(type="submit" value="Log In")
