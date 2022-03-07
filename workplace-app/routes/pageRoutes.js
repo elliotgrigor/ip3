@@ -7,5 +7,4 @@ router.get('/', controller.home);
 router.get('/login', controller.login);
 router.post('/login', controller.login);
 
-
 module.exports = router;
