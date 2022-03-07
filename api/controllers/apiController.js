@@ -16,3 +16,13 @@ exports.getAllEmployees = (req, res) => {
     res.json({ employees });
   });
 }
+
+exports.getEmployeesByLevel = (req, res) => {
+  const employees = employeeModel.find(
+    { 'access.level': req.params.accessLevel },
+    (err, employees) => {
+      if (err) return console.log(err);
+      res.json({ employees });
+    }
+  );
+}
