@@ -1,3 +1,16 @@
+require('dotenv').config();
+
+const mongoose = require('mongoose');
+
+main().catch(err => console.log(err));
+
+async function main() {
+  await mongoose.connect(
+    `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_DOMAIN}/${process.env.MONGO_DB}?retryWrites=true&w=majority`,
+    { useNewUrlParser: true },
+  );
+}
+
 const Employee = require('./models/employeeModel');
 
 const john = new Employee({
