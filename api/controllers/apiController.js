@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const employeeModel = require('../models/employeeModel');
 
 main().catch(err => console.log(err));
 
@@ -10,5 +11,8 @@ async function main() {
 }
 
 exports.getAllEmployees = (req, res) => {
-  res.json({ data: "employee_data" });
+  const employees = employeeModel.find({}, (err, employees) => {
+    if (err) return console.log(err);
+    res.json({ employees });
+  });
 }
