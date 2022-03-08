@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser');
-
+const bCrypt = require('bcrypt');
+const { render } = require('pug');
 exports.home = (req, res) => {
   const loggedInUser = {firstName: "Devlin", employeeType: "Manager"};
   res.render('index', {data: loggedInUser});
@@ -11,7 +12,14 @@ exports.login = (req, res) => {
   }else if (req.method==='POST'){
     const id = req.body.userID;
     const password = req.body.password;
-    console.log(req.body);
+    //console.log(req.body);
+    bcrypt.compare(password, hash, function(err, result) {
+      if (result == true) {
+        //Make authenication token
+      }else {
+        res.redirect('/login')
+      }
+  });
   }
 }
 
