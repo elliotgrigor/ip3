@@ -1,3 +1,4 @@
+const bodyParser = require('body-parser');
 
 exports.home = (req, res) => {
   const loggedInUser = {firstName: "Devlin", employeeType: "Manager"};
@@ -5,7 +6,13 @@ exports.home = (req, res) => {
 }
 
 exports.login = (req, res) => {
-  res.render('login', {});
+  if (req.method==='GET'){
+    return res.render('login', {});
+  }else if (req.method==='POST'){
+    const id = req.body.userID;
+    const password = req.body.password;
+    console.log(req.body);
+  }
 }
 
 exports.payslips = (req, res) => {
