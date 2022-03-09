@@ -1,25 +1,27 @@
 const bodyParser = require('body-parser');
 const bCrypt = require('bcrypt');
 const { render } = require('pug');
+
 exports.home = (req, res) => {
   const loggedInUser = {firstName: "Devlin", employeeType: "Manager"};
   res.render('index', {data: loggedInUser});
 }
 
 exports.login = (req, res) => {
-  if (req.method==='GET'){
+  if (req.method === 'GET') {
     return res.render('login', {});
-  }else if (req.method==='POST'){
+  }
+  else if (req.method === 'POST') {
     const id = req.body.userID;
     const password = req.body.password;
-    //console.log(req.body);
+    
     bcrypt.compare(password, hash, function(err, result) {
       if (result == true) {
         //Make authenication token
-      }else {
-        res.redirect('/login')
+      } else {
+        res.redirect('/login');
       }
-  });
+    });
   }
 }
 
