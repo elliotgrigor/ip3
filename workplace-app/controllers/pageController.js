@@ -15,7 +15,7 @@ exports.login = (req, res) => {
     const id = req.body.userID;
     const password = req.body.password;
     
-    bcrypt.compare(password, hash, function(err, result) {
+    bcrypt.compare(password, hash, (err, result) => {
       if (result == true) {
         //Make authenication token
       } else {
