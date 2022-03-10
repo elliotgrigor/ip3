@@ -29,7 +29,7 @@ const johnDailyHours = new DailyHoursModel(
   forDate    = new Date(),
   startTime  = new Date(),
   finishTime = new Date(),
-  dailyHours = new Date(),
+  dailyHours = 8.03,
 );
 
 const johnPayslip = new PayslipModel(
