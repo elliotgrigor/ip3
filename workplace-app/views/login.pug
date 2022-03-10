@@ -1,12 +1,12 @@
 include includes/header.pug
 div.testing 
-    img.medium-image(src="../res/logo-blue.png" alt="Logo" style="padding: 5px")
+    img.medium-image(src="/res/logo-blue.png" alt="Logo" style="padding: 5px")
 div.logInCard
     h3 Please log in to continue
     form(action="/login" method="post") 
         label(for="userID") ID Number: 
         br
-        input(type="number" name="userID" id="userID")
+        input(type="text" name="userID" id="userID")
         br
         label(for="password") Password: 
         br
