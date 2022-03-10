@@ -42,23 +42,27 @@ const johnPayslip = new PayslipModel(
   issueDate      = new Date(),
 );
 
-const john = new EmployeeModel(
-  staffNumber  = 'A001',
-  firstName    = 'John',
-  lastName     = 'Smith',
-  dateOfBirth  = new Date(),
-  gender       = 'M',
-  profilePic   = '/img/image.png',
-  access       = johnAccess,
-  password     = 'aSecurePassword',
-  contact      = johnContact,
-  daysWorked   = [johnDailyHours],
-  payRate      = 8.95,
-  natInsNumber = 'AB123456C',
-  payslips     = [johnPayslip],
-);
+bcrypt.genSalt(10, (err, salt) => {
+  bcrypt.hash('nonce', salt, (err, hash) => {
+    const john = new EmployeeModel(
+      staffNumber  = 'A001',
+      firstName    = 'John',
+      lastName     = 'Smith',
+      dateOfBirth  = new Date(),
+      gender       = 'M',
+      profilePic   = '/img/image.png',
+      access       = johnAccess,
+      password     = hash,
+      contact      = johnContact,
+      daysWorked   = [johnDailyHours],
+      payRate      = 8.95,
+      natInsNumber = 'AB123456C',
+      payslips     = [johnPayslip],
+    );
 
-employees.insert(john, (err, newDoc) => {
-  if (err) return console.log(err);
-  console.log(newDoc);
+    employees.insert(john, (err, newDoc) => {
+      if (err) return console.log(err);
+      console.log(newDoc);
+    });
+  });
 });
