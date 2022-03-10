@@ -1,5 +1,5 @@
 const bodyParser = require('body-parser');
-const bCrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 const { render } = require('pug');
 
 exports.home = (req, res) => {
