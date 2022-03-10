@@ -6,6 +6,7 @@ const db = require('../../api/controllers/dbController');
 db.load();
 
 exports.home = (req, res) => {
+  console.log(req.session);
   const loggedInUser = {firstName: "Devlin", employeeType: "Manager"};
   res.render('index', {data: loggedInUser});
 }
@@ -54,4 +55,10 @@ exports.punchIn = (req, res) => {
 
 exports.employee = (req, res) => {
   res.render('employee', {});
+}
+
+exports.authCheck = (req, res) => {
+  if (!req.session.loggedIn) {
+    return res.redirect('/login');
+  }
 }
