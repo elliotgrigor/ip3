@@ -3,7 +3,9 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const passport = require('passport');
 const session = require('express-session');
+const SQLiteStore = require('connect-sqlite3')(session);
 
 const routes = require('./routes/pageRoutes');
 const auth = require('./routes/authRoutes');
@@ -11,6 +13,13 @@ const auth = require('./routes/authRoutes');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:false}));
 app.set('view engine', 'pug');
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false,
+  store: new SQLiteStore({ db: 'sessions.db', dir: './var/db' }),
+}));
+app.use(passport.authenticate('session'));
 
 app.use('/', routes);
 app.use('/', auth);

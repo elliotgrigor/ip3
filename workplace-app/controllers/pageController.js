@@ -1,8 +1,11 @@
 const { render } = require('pug');
 
 exports.home = (req, res) => {
-  const loggedInUser = {firstName: "Devlin", employeeType: "Manager"};
-  res.render('index', {data: loggedInUser});
+  if (req.isAuthenticated()) {
+    const loggedInUser = {firstName: "Devlin", employeeType: "Manager"};
+    return res.render('index', {data: loggedInUser});
+  }
+  res.redirect('/login');
 }
 
 exports.payslips = (req, res) => {
