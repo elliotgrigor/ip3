@@ -1,28 +1,26 @@
-const mongoose = require('mongoose');
-const employeeModel = require('../models/employeeModel');
-
-main().catch(err => console.log(err));
-
-async function main() {
-  await mongoose.connect(
-    `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_DOMAIN}/${process.env.MONGO_DB}?retryWrites=true&w=majority`,
-    { useNewUrlParser: true },
-  );
-}
+const { employees } = require('./dbController.js');
+const {
+  EmployeeModel,
+  AccessModel,
+  AddressModel,
+  ContactModel,
+  DailyHoursModel,
+  PayslipModel,
+} = require('../models/EmployeeModel');
 
 exports.getAllEmployees = (req, res) => {
-  const employees = employeeModel.find({}, (err, employees) => {
+  employees.find({}, (err, docs) => {
     if (err) return console.log(err);
-    res.json({ employees });
+    res.json({ employees: docs });
   });
 }
 
 exports.getEmployeesByLevel = (req, res) => {
-  const employees = employeeModel.find(
+  employees.find(
     { 'access.level': req.params.accessLevel },
-    (err, employees) => {
+    (err, docs) => {
       if (err) return console.log(err);
-      res.json({ employees });
+      res.json({ employees: docs });
     }
   );
 }

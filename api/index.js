@@ -3,8 +3,10 @@ require('dotenv').config()
 const express = require('express');
 const app = express();
 
-const routes = require('./routes/apiRoutes');
+const db = require('./controllers/dbController');
+db.load();
 
+const routes = require('./routes/apiRoutes');
 app.use('/api/v1', routes);
 
 app.listen(process.env.PORT, process.env.IP, () => {
