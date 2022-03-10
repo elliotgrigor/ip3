@@ -58,8 +58,6 @@ const john = new EmployeeModel(
   payslips     = [johnPayslip],
 );
 
-console.log(john);
-
 employees.insert(john, (err, newDoc) => {
   if (err) return console.log(err);
   console.log(newDoc);
