@@ -1,3 +1,8 @@
+const AccessModel = require('./AccessModel');
+const AddressModel = require('./AddressModel');
+const ContactModel = require('./ContactModel');
+const DailyHoursModel = require('./DailyHoursModel');
+const PayslipModel = require('./PayslipModel');
 
 class EmployeeModel {
   constructor(
@@ -33,4 +38,9 @@ class EmployeeModel {
   }
 }
 
-module.exports = EmployeeModel;
+exports.EmployeeModel = EmployeeModel;
+exports.AccessModel = AccessModel;
+exports.AddressModel = AddressModel;
+exports.ContactModel = ContactModel;
+exports.DailyHoursModel = DailyHoursModel;
+exports.PayslipModel = PayslipModel;
