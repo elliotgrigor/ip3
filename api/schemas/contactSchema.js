@@ -8,8 +8,8 @@ const contactSchema = new Schema({
     postCode: { type: String, required: true },
     city: { type: String, required: true },
   },
-  phone: { type: String, required: true },
-  email: { type: String, required: true },
+  phone: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true },
 }, { _id: false });
 
 module.exports = contactSchema;

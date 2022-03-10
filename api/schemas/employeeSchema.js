@@ -10,6 +10,7 @@ const employeeSchema = new Schema({
   staffNumber: {
     type: String,
     required: true,
+    unique: true,
   },
   firstName: {
     type: String,
