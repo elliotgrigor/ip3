@@ -1,0 +1,51 @@
+//Function to add all the shifts to the table for the specific day - pass in a list of shifts 
+mixin loopShifts(daysShifts)
+    each shift in daysShifts
+        tr 
+            td 
+            td= shift.name 
+            td= shift.startTime 
+            td= shift.endTime
+            td 
+                button Edit 
+                button Delete 
+
+//Function to add a row to make a header of that days shifts - pass in the day as a string
+mixin daysHeader(day)
+    tr 
+        td= day 
+        td 
+        td 
+        td
+        td 
+            a(href="addShift.html")
+                button Add
+
+include includes/header.pug
+div#page-container 
+    include includes/nav
+    div#content-container
+        div(class="scroll-flex-row-container centre-flex-row-items" style="margin-top: var(--medium-px)") 
+            table(class="rota-table") 
+                thead 
+                    tr
+                        th Day 
+                        th Employee 
+                        th Start Time 
+                        th End Time 
+                        th Add / Edit / Delete
+                tbody 
+                    +daysHeader("Monday")
+                    +loopShifts(mondayShifts)
+                    +daysHeader("Tuesday")
+                    +loopShifts(tuesdayShifts)
+                    +daysHeader("Wednesday")
+                    +loopShifts(wednesdayShifts)
+                    +daysHeader("Thursday")
+                    +loopShifts(thursdayShifts)
+                    +daysHeader("Friday")
+                    +loopShifts(fridayShifts)
+                    +daysHeader("Saturday")
+                    +loopShifts(satudayShifts)
+                    +daysHeader("Sunday")
+                    +loopShifts(sundayShifts)
