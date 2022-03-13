@@ -1,0 +1,10 @@
+mixin loopPayslips(payslipsIn)
+    each payslip in payslipsIn 
+        embed(src=`${payslip.payslipSrc}`, type="application/pdf", width="500", height="375")
+
+include includes/header.pug
+div#page-container 
+    include includes/nav
+    div#content-container
+        div(class="centre-flex-row-items pdf-container")
+            +loopPayslips(payslips)

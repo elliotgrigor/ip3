@@ -1,0 +1,28 @@
+//Same as the myDetails page except now all inputs arent readOnly
+
+include includes/header.pug
+div#page-container 
+    include includes/nav
+    div#content-container
+        div(class="flex-row-container centre-flex-row-items" style="margin-top: var(--medium-px)")
+            div(class="title-text-box blue-title-text-box" style="padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;").
+                Edit Details
+        div(class="scroll-flex-row-container centre-flex-row-items" style="margin-top: var(--medium-px)")
+            form(class="vertical-form")
+                div(style="height: 320px")
+                    label(for="firstName") First Name 
+                    label(for="lastName") Last Name
+                    label(for="address") Address
+                    label(for="phoneNumber") Phone Number 
+                    label(for="dateOfBirth") Date of Birth 
+                    label(for="emergencyPhoneNumber") Emergency Number
+                div(style="width: 15vw; min-width: 150px; height: 270px")   
+                    input(type="text" name="employeeFirstName" placeholder=`${loggedInUser.firstName}`)  
+                    input(type="text" name="employeeLastName" placeholder=`${loggedInUser.lastName}`) 
+                    input(type="text" name="employeeAddress" placeholder=`${loggedInUser.address}`) 
+                    input(type="text" name="employeePhoneNumber" placeholder=`${loggedInUser.phoneNumber}`) 
+                    input(type="text" name="employeeDateOfBirth" placeholder=`${loggedInUser.dateOfBirth}`) 
+                    input(type="text" name="employeeEmergencyNumber" placeholder=`${loggedInUser.emergencyNumber}`)
+                div 
+                    input(class="primary-button" type="submit" value="Update")
+                    a(class="secondary-button") Cancel 
