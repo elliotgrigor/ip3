@@ -1,0 +1,26 @@
+include includes/header.pug
+div#page-container 
+    include includes/nav
+    div#content-container
+        div(class="flex-row-container centre-flex-row-items" style="margin-top: var(--medium-px)")
+            div(class="title-text-box blue-title-text-box" style="padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;").
+                Add Employees
+        div(class="scroll-flex-row-container centre-flex-row-items" style="margin-top: var(--medium-px)")
+            form(class="vertical-form")
+                div(style="height: 320px")
+                    label(for="firstName") First Name 
+                    label(for="lastName") Last Name
+                    label(for="address") Address
+                    label(for="phoneNumber") Phone Number 
+                    label(for="dateOfBirth") Date of Birth 
+                    label(for="emergencyPhoneNumber") Emergency Number
+                div(style="width: 15vw; min-width: 150px; height: 270px")   
+                    input(type="text" name="employeeFirstName")  
+                    input(type="text" name="employeeLastName") 
+                    input(type="text" name="employeeAddress") 
+                    input(type="text" name="employeePhoneNumber") 
+                    input(type="text" name="employeeDateOfBirth") 
+                    input(type="text" name="employeeEmergencyNumber")
+                div 
+                    input(class="primary-button" type="submit" value="Add")
+                    a(class="secondary-button") Cancel 
