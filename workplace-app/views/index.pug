@@ -2,21 +2,26 @@
 
 mixin card(cardData)
     a(href=cardData.link class="card-shortcut title-text medium-text white-text blue-background")
-        img(class="card-large-image" src=cardData.imgLocation class="large-image")
-        p= cardData.title
+        if cardData.class 
+            img(class="card-large-image" src=cardData.imgLocation class="large-image" class=`${cardData.class}`)
+            p= cardData.title
+        else
+            img(class="card-large-image" src=cardData.imgLocation class="large-image")
+            p= cardData.title
 
 - var payslipsCard = {title: "Payslips", imgLocation: "/res/piggybank.svg", link: "/payslips"}
 - var rotaCard = {title: "Rota", imgLocation: "/res/calendar.svg", link: "/rota"}
 - var myDetailsCard = {title: "My Details", imgLocation: "/res/person.svg", link: "/profile"}
 - var punchInCard = {title: "Punch In/Out", imgLocation: "/res/clock.svg", link: "/timeManagement"}
-- var employeesCard = {title: "Employees", imgLocation: "/res/employees.svg", link: "/employeeList"}
+- var employeesCard = {title: "Employees", imgLocation: "/res/employees.svg", link: "/employeeList", class: "filter-white"}
 
 include includes/header.pug
 div#page-container 
     include includes/nav
     div#content-container
-        div(class="title-text large-text black-text").
-            Welcome to your G9 #{data.employeeType} dashboard, #{data.firstName}!
+        div(class="flex-row-container centre-flex-row-items" style="margin-top: var(--medium-px)")
+            div(class="title-text-box" style="padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;").
+                Welcome to your G9 #{data.employeeType} dashboard, #{data.firstName}!
         div(class="item-row-container medium-space list-left-medium-space")
             if data.employeeType == "Employee"
                 +card(payslipsCard)
