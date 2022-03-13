@@ -1,0 +1,18 @@
+//Geths the current time for the users punch in 
+- var currentTime = new Date().toLocaleTimeString();
+
+
+include includes/header.pug
+div#page-container 
+    include includes/nav
+    div#content-container
+        div(class="flex-row-container centre-flex-row-items" style="margin-top: var(--medium-px)")
+            div(class="title-text-box" style="padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;").
+                Current Time: #{currentTime}
+        div(class="punchInButtonContainer flex-row-container centre-flex-row-items")
+            if loggedInUser.lastPunch == "Out"
+                button.punchInButton Punch In
+                //When punched in reroute to home page (?)
+            else
+                button.punchInButton Punch Out 
+                //When punched out reroute to home page (?)
