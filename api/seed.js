@@ -60,7 +60,39 @@ bcrypt.genSalt(10, (err, salt) => {
       payslips     = [johnPayslip],
     );
 
-    employees.insert(john, (err, newDoc) => {
+    const jane = new EmployeeModel(
+      staffNumber  = 'A002',
+      firstName    = 'Jane',
+      lastName     = 'Frankenstein',
+      dateOfBirth  = new Date(),
+      gender       = 'F',
+      profilePic   = '/img/image.png',
+      access       = { level: 3 },
+      password     = hash,
+      contact      = null,
+      daysWorked   = [null],
+      payRate      = 12.80,
+      natInsNumber = 'AB123456C',
+      payslips     = [null],
+    );
+
+    const joe = new EmployeeModel(
+      staffNumber  = 'A003',
+      firstName    = 'Joe',
+      lastName     = 'Garcia',
+      dateOfBirth  = new Date(),
+      gender       = 'M',
+      profilePic   = '/img/image.png',
+      access       = { level: 1 },
+      password     = hash,
+      contact      = null,
+      daysWorked   = [null],
+      payRate      = 12.80,
+      natInsNumber = 'AB123456C',
+      payslips     = [null],
+    );
+
+    employees.insert([john, jane, joe], (err, newDoc) => {
       if (err) return console.log(err);
       console.log(newDoc);
     });
