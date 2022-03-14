@@ -21,13 +21,13 @@ div#page-container
     div#content-container
         div(class="flex-row-container centre-flex-row-items" style="margin-top: var(--medium-px)")
             div(class="title-text-box" style="padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;").
-                Welcome to your G9 #{data.employeeType} dashboard, #{data.firstName}!
+                Welcome to your G9 #{loggedInUser.employeeType} dashboard, #{loggedInUser.firstName}!
         div(class="item-row-container medium-space list-left-medium-space")
-            if data.employeeType == "Employee"
+            if loggedInUser.employeeType == "Employee"
                 +card(payslipsCard)
                 +card(myDetailsCard)
                 +card(punchInCard)
-            if data.employeeType == "Manager"
+            if loggedInUser.employeeType == "Manager"
                 +card(payslipsCard)
                 +card(myDetailsCard)
                 +card(punchInCard)

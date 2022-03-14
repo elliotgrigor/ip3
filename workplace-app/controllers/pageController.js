@@ -3,7 +3,7 @@ const { render } = require('pug');
 exports.home = (req, res) => {
   if (req.isAuthenticated()) {
     const loggedInUser = {firstName: "Devlin", employeeType: "Manager"};
-    return res.render('index', {data: loggedInUser});
+    return res.render('index', {loggedInUser});
   }
   res.redirect('/login');
 }
