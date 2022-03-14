@@ -1,7 +1,7 @@
 const { render } = require('pug');
 
 exports.home = (req, res) => {
-  if (req.isAuthenticated()) {
+  if (req.isAuthenticated() && req.user.access.level === 3) {
     const loggedInUser = {firstName: "Devlin", employeeType: "Manager"};
     return res.render('index', {loggedInUser});
   }
