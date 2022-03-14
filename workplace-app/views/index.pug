@@ -19,15 +19,17 @@ include includes/header.pug
 div#page-container 
     include includes/nav
     div#content-container
+        form(action="/logout" method="POST" style="margin-left: 100px")
+            input(type="submit")
         div(class="flex-row-container centre-flex-row-items" style="margin-top: var(--medium-px)")
             div(class="title-text-box" style="padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;").
-                Welcome to your G9 #{loggedInUser.employeeType} dashboard, #{loggedInUser.firstName}!
+                Welcome to your G9 #{loggedInUser.accessLevel >= 2 ? "Manager" : "Employee"} dashboard, #{loggedInUser.name}!
         div(class="item-row-container medium-space list-left-medium-space")
-            if loggedInUser.employeeType == "Employee"
+            if loggedInUser.accessLevel === 1
                 +card(payslipsCard)
                 +card(myDetailsCard)
                 +card(punchInCard)
-            if loggedInUser.employeeType == "Manager"
+            if loggedInUser.accessLevel >= 2
                 +card(payslipsCard)
                 +card(myDetailsCard)
                 +card(punchInCard)

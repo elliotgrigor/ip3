@@ -11,7 +11,7 @@ db.load();
 passport.use(new LocalStrategy(function verify(username, password, cb) {
   db.employees.findOne(
     { staffNumber: username },
-    { staffNumber: 1, password: 1, 'access.level': 1 },
+    { staffNumber: 1, password: 1, 'access.level': 1, firstName: 1 },
     (err, doc) => {
       if (err) return cb(err);
       if (!doc) return cb(null, false, { message: 'Incorrect username or password.' });
@@ -29,16 +29,13 @@ passport.use(new LocalStrategy(function verify(username, password, cb) {
 
 passport.serializeUser((user, cb) => {
   process.nextTick(() => {
-    cb(null, { id: user.id, username: user.username });
+    cb(null, { ...user });
   });
+});
 
-  const userData = { ...user };
-
-  passport.deserializeUser((user, cb) => {
-    process.nextTick(() => {
-      user = userData;
-      return cb(null, user);
-    });
+passport.deserializeUser((user, cb) => {
+  process.nextTick(() => {
+    return cb(null, user);
   });
 });
 
@@ -46,6 +43,9 @@ router.get('/login', controller.login);
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login',
-}));
+}), (req, res) => {
+  console.log('Logged in');
+});
+router.post('/logout', controller.logout);
 
 module.exports = router;
