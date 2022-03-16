@@ -21,7 +21,11 @@ exports.addShift = (req, res) => {
 }
 
 exports.myDetails = (req, res) => {
-  res.render('myDetails', {});
+  const loggedInUser = {
+    accessLevel: req.user.access.level,
+    name: req.user.firstName,
+  };
+  res.render('myDetails', { loggedInUser });
 }
 
 exports.punchIn = (req, res) => {
