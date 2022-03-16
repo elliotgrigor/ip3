@@ -12,5 +12,6 @@ div#taskbar-container(class="blue-background")
             img(src="/res/calendar.svg", alt="calendar logo")
         a(href="#")
             img(src="/res/employees.svg", alt="employees logo", class="filter-white")
-    a(href="#")
+    if loggedInUser
+        a(href="/logout")
             img(src="/res/logout.svg", alt="logout logo", class="filter-white")
