@@ -8,8 +8,32 @@ exports.home = (req, res) => {
   res.render('index', { loggedInUser });
 }
 
+exports.profile = (req, res) => {
+  const loggedInUser = {
+    accessLevel: req.user.access.level,
+    name: req.user.firstName,
+  };
+  res.render('profile', { loggedInUser });
+}
+
+exports.editProfile = (req, res) => {
+  // if GET, if POST
+}
+
+exports.timeClock = (req, res) => {
+  const loggedInUser = {
+    accessLevel: req.user.access.level,
+    name: req.user.firstName,
+  };
+  res.render('timeClock', { loggedInUser });
+}
+
 exports.payslips = (req, res) => {
-  res.render('payslips', {});
+  const loggedInUser = {
+    accessLevel: req.user.access.level,
+    name: req.user.firstName,
+  };
+  res.render('payslips', { loggedInUser });
 }
 
 exports.viewRota = (req, res) => {
@@ -20,17 +44,6 @@ exports.addShift = (req, res) => {
   res.render('addShift', {});
 }
 
-exports.myDetails = (req, res) => {
-  const loggedInUser = {
-    accessLevel: req.user.access.level,
-    name: req.user.firstName,
-  };
-  res.render('myDetails', { loggedInUser });
-}
-
-exports.punchIn = (req, res) => {
-  res.render('punchIn', {});
-}
 
 exports.employees = (req, res) => {
   res.render('employees', {});
