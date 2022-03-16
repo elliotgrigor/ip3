@@ -12,8 +12,12 @@ exports.payslips = (req, res) => {
   res.render('payslips', {});
 }
 
-exports.rota = (req, res) => {
-  res.render('rota', {});
+exports.viewRota = (req, res) => {
+  res.render('Rota', {});
+}
+
+exports.addShift = (req, res) => {
+  res.render('addShift', {});
 }
 
 exports.myDetails = (req, res) => {
@@ -24,6 +28,22 @@ exports.punchIn = (req, res) => {
   res.render('punchIn', {});
 }
 
-exports.employee = (req, res) => {
-  res.render('employee', {});
+exports.employees = (req, res) => {
+  res.render('employees', {});
+}
+
+exports.viewEmployee = (req, res) => {
+  res.render('viewEmployee', {});
+}
+
+exports.addEmployee = (req, res) => {
+  res.render('addEmployee', {});
+}
+
+exports.editEmployeeDetails = (req, res) => {
+  res.render('editEmployeeDetails', {});
+}
+
+exports.editMyDetails = (req, res) => {
+  res.render('editMyDetails', {});
 }
