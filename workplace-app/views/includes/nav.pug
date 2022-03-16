@@ -13,5 +13,6 @@ div#taskbar-container(class="blue-background")
         a(href="#")
             img(src="/res/employees.svg", alt="employees logo", class="filter-white")
     if loggedInUser
-        a(href="/logout")
-            img(src="/res/logout.svg", alt="logout logo", class="filter-white")
+        form(action="/logout" method="POST")
+            button(type="submit")
+                img(src="/res/logout.svg", alt="logout logo", class="filter-white")
