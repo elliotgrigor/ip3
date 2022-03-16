@@ -8,21 +8,39 @@ div#page-container
             div(class="title-text-box blue-title-text-box" style="padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;").
                 Edit Details
         div(class="scroll-flex-row-container centre-flex-row-items" style="margin-top: var(--medium-px)")
-            form(class="vertical-form")
-                div(style="height: 320px")
-                    label(for="firstName") First Name 
-                    label(for="lastName") Last Name
-                    label(for="address") Address
-                    label(for="phoneNumber") Phone Number 
-                    label(for="dateOfBirth") Date of Birth 
-                    label(for="emergencyPhoneNumber") Emergency Number
-                div(style="width: 15vw; min-width: 150px; height: 270px")   
-                    input(type="text" name="employeeFirstName" placeholder=`${loggedInUser.firstName}`)  
-                    input(type="text" name="employeeLastName" placeholder=`${loggedInUser.lastName}`) 
-                    input(type="text" name="employeeAddress" placeholder=`${loggedInUser.address}`) 
-                    input(type="text" name="employeePhoneNumber" placeholder=`${loggedInUser.phoneNumber}`) 
-                    input(type="text" name="employeeDateOfBirth" placeholder=`${loggedInUser.dateOfBirth}`) 
-                    input(type="text" name="employeeEmergencyNumber" placeholder=`${loggedInUser.emergencyNumber}`)
-                div 
-                    input(class="primary-button" type="submit" value="Update")
-                    a(class="secondary-button") Cancel 
+            form(class="emp-form")
+                div(class="emp-form__item")
+                    label(for="firstname" class="emp-form__label") First Name 
+                    input(type="text" class="emp-form__input" name="firstname" id="firstname")
+                div(class="emp-form__item")
+                    label(for="lastname" class="emp-form__label") Last Name 
+                    input(type="text" class="emp-form__input" name="lastname" id="lastname")
+                div(class="emp-form__item")
+                    label(for="birthdate" class="emp-form__label") Date of Birth
+                    input(type="date" class="emp-form__input" name="birthdate" id="birthdate")
+                div(class="emp-form__item")
+                    label(for="gender" class="emp-form__label") Gender
+                    select(class="emp-form__select" name="gender" id="gender")
+                        option(value="f") Female 
+                        option(value="m") Male
+                        option(value="o") Other  
+                div(class="emp-form__item")
+                    label(for="phone" class="emp-form__label") Phone Number
+                    input(type="text" class="emp-form__input" name="phone" id="phone")
+                div(class="emp-form__item")
+                    label(for="email" class="emp-form__label") Email
+                    input(type="text" class="emp-form__input" name="email" id="email")
+                div(class="emp-form__item")
+                    label(for="houseno" class="emp-form__label") House Number
+                    input(type="text" class="emp-form__input" name="houseno" id="houseno")
+                div(class="emp-form__item")
+                    label(for="street" class="emp-form__label") Street
+                    input(type="text" class="emp-form__input" name="street" id="street")
+                div(class="emp-form__item")
+                    label(for="postcode" class="emp-form__label") Postcode
+                    input(type="text" class="emp-form__input" name="postcode" id="postcode")
+                div(class="emp-form__item")
+                    label(for="city" class="emp-form__label") City
+                    input(type="text" class="emp-form__input" name="city" id="city")
+                div(class="emp-form__item")
+                    button(class="emp-form__button" type="submit") Update 
