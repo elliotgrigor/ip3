@@ -499,3 +499,27 @@ body {
 #taskbar-container > a:first-child {
     padding-bottom: 40px;
 }
+
+#taskbar-container > form > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+
+    width: 60px;
+    height: 60px;
+
+    padding-top: 20px;
+
+    background: linear-gradient(75deg, rgb(58, 117, 219), rgb(40, 120, 255));
+
+    border: none;
+}
+
+#taskbar-container > form > button > img {
+    width: 50px;
+
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 10px;
+}
