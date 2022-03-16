@@ -1,5 +1,8 @@
 const { render } = require('pug');
 
+const db = require('../../api/controllers/dbController');
+db.load();
+
 exports.home = (req, res) => {
   const loggedInUser = {
     accessLevel: req.user.access.level,
@@ -29,15 +32,24 @@ exports.timeClock = (req, res) => {
 }
 
 exports.payslips = (req, res) => {
-  const loggedInUser = {
+  let loggedInUser = {
     accessLevel: req.user.access.level,
     name: req.user.firstName,
   };
-  res.render('payslips', { loggedInUser });
+
+  db.employees.findOne(
+    { staffNumber: req.user.staffNumber },
+    (err, doc) => {
+      if (err) return console.log(err);
+      loggedInUser = { ...loggedInUser, payslips: doc.payslips };
+
+      res.render('payslips', { loggedInUser });
+    }
+  );
 }
 
 exports.viewRota = (req, res) => {
-  res.render('Rota', {});
+  res.render('rota', {});
 }
 
 exports.addShift = (req, res) => {
@@ -45,7 +57,7 @@ exports.addShift = (req, res) => {
 }
 
 
-exports.employees = (req, res) => {
+exports.listEmployees = (req, res) => {
   res.render('employees', {});
 }
 
@@ -57,10 +69,14 @@ exports.addEmployee = (req, res) => {
   res.render('addEmployee', {});
 }
 
-exports.editEmployeeDetails = (req, res) => {
+exports.editEmployee = (req, res) => {
+  res.render('editEmployeeProfile', {});
+}
+
+exports.editEmployeeProfile = (req, res) => {
   res.render('editEmployeeDetails', {});
 }
 
-exports.editMyDetails = (req, res) => {
+exports.editProfile = (req, res) => {
   res.render('editMyDetails', {});
 }

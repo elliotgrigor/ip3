@@ -8,9 +8,9 @@ div#taskbar-container(class="blue-background")
     a(href="/timeClock")
         img(src="/res/clock.svg", alt="clock logo")
     if loggedInUser.accessLevel >= 2
-        a(href="#")
+        a(href="/rota")
             img(src="/res/calendar.svg", alt="calendar logo")
-        a(href="#")
+        a(href="/employees")
             img(src="/res/employees.svg", alt="employees logo", class="filter-white")
     if loggedInUser
         form(action="/logout" method="POST")

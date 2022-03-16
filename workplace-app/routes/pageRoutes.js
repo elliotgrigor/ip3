@@ -16,16 +16,16 @@ router.get('/profile', passportAuth, controller.profile);
 router.get('/profile/edit', passportAuth, controller.editProfile);
 router.post('/profile/edit', passportAuth, controller.editProfile);
 
-router.get('/employees', passportAuth, controller.employees);
-router.get('/employees/:staffNumber/edit', passportAuth, controller.employees);
+router.get('/employees', passportAuth, controller.listEmployees);
+router.get('/employees/add', controller.addEmployee);
+router.get('/employees/:staffNumber', controller.viewEmployee);
+router.get('/employees/:staffNumber/edit', passportAuth, controller.editEmployee);
+router.post('/employees/:staffNumber/edit', passportAuth, controller.editEmployee);
 
 router.get('/timeClock', controller.timeClock);
+router.get('/payslips', controller.payslips);
 
-router.get('/payslips', controller.payslips); 
-router.get('/view-rota', controller.viewRota);
-router.get('/add-shift', controller.addShift);
-//punch in pug file should be camel cased
-router.get('/view-employee', controller.viewEmployee);
-router.get('/add-employee', controller.addEmployee);
+router.get('/rota', controller.viewRota);
+router.get('/rota/add-shift', controller.addShift);
 
 module.exports = router;
