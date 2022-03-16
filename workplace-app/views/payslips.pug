@@ -1,10 +1,30 @@
 mixin loopPayslips(payslips)
     each payslip in payslips
-        embed(src=`${payslip.taxCode}`, type="application/pdf", width="500", height="375")
+        table(class="rota-table")
+            caption(class="payslip-caption-box")= "For Date Ending: " + payslip.issueDate
+            thead 
+                tr 
+                    th Gross Pay 
+                    th Net Pay 
+                    th Nat Insurance Pay 
+                    th Income Tax
+                    th Tax Code
+                    th Pensions Pay 
+            tbody 
+                tr 
+                    td=payslip.grossPay 
+                    td=payslip.netPay 
+                    td=payslip.natInsContrib
+                    td=payslip.incomeTax 
+                    td=payslip.taxCode 
+                    td=payslip.pensionContrib
 
 include includes/header.pug
 div#page-container 
     include includes/nav
     div#content-container
-        div(class="centre-flex-row-items pdf-container")
-            +loopPayslips(loggedInUser.payslips)
+        div(class="payslip-row-container centre-flex-row-items" style="margin-top: var(--medium-px)")
+            div(class="title-text-box blue-title-text-box" style="padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;").
+                Payslips
+            div(class="centre-flex-row-items" style="margin-top: var(--medium-px)")
+                +loopPayslips(loggedInUser.payslips)

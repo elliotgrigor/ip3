@@ -192,6 +192,13 @@ body {
     flex-wrap: nowrap;
 }
 
+.payslip-row-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
 .pdf-container {
     padding-left: 100px;
 }
@@ -218,6 +225,16 @@ body {
     border-radius: var(--small-px);
 
     font-size: var(--x2large-font);
+    text-align: center;
+}
+
+.payslip-caption-box {
+    width: auto;
+    height: auto;
+    padding: var(--small-px);
+    border-radius: var(--small-px);
+
+    font-size: var(--medium-font);
     text-align: center;
 }
 
