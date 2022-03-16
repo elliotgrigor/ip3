@@ -514,6 +514,8 @@ body {
     background: linear-gradient(75deg, rgb(58, 117, 219), rgb(40, 120, 255));
 
     border: none;
+
+    cursor: pointer;
 }
 
 #taskbar-container > form > button > img {
