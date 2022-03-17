@@ -9,9 +9,9 @@ mixin loopEmployees(employeesIn)
             td= employee.age
             td= employee.address 
             td
-                a(href="viewEmployee.html") View | 
-                a(href="editEmployeeDetails.html") Edit |
-                a(href="#")  Delete 
+                a(href=`/employees/${employee.staffNumber}`) View | 
+                a(href=`/employees/${employee.staffNumber}/edit`) Edit |
+                a(href=`/employees/${employee.staffNumber}/delete`)  Delete 
 
 include includes/header.pug
 div#page-container 
