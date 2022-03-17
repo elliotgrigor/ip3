@@ -11,42 +11,49 @@ div#page-container
             form(class="emp-form")
                 div(class="emp-form__item")
                     label(for="firstname" class="emp-form__label") First Name 
-                    input(type="text" class="emp-form__input" name="firstname" id="firstname")
+                    input(type="text" class="emp-form__input" name="firstname" id="firstname" placeholder=`${passedInUser.firstName}` readonly)
                 div(class="emp-form__item")
                     label(for="lastname" class="emp-form__label") Last Name 
-                    input(type="text" class="emp-form__input" name="lastname" id="lastname")
+                    input(type="text" class="emp-form__input" name="lastname" id="lastname" placeholder=`${passedInUser.lastName}` readonly)
                 div(class="emp-form__item")
                     label(for="birthdate" class="emp-form__label") Date of Birth
-                    input(type="date" class="emp-form__input" name="birthdate" id="birthdate")
+                    input(type="date" class="emp-form__input" name="birthdate" id="birthdate" placeholder=`${passedInUser.dateOfBirth}` readonly)
                 div(class="emp-form__item")
                     label(for="gender" class="emp-form__label") Gender
-                    select(class="emp-form__select" name="gender" id="gender")
-                        option(value="f") Female 
-                        option(value="m") Male
-                        option(value="o") Other  
+                    select(class="emp-form__select" name="gender" id="gender" disabled)
+                        if passedInUser.gender == 'M'
+                            option(value="1" selected) Male
+                        if passedInUser.gender == 'F'
+                            option(value="1" selected) Female
+                        if passedInUser.gender == 'O'
+                            option(value="1" selected) Other
                 div(class="emp-form__item")
                     label(for="employeetype" class="emp-form__label") Employee Type
-                    select(class="emp-form__select" name="employeetype" id="employeetype")
-                        option(value="1") Employee 
-                        option(value="2") Middle Manager
-                        option(value="3") Senior Manager 
+                    select(class="emp-form__select" name="employeetype" id="employeetype" disabled)
+                        if passedInUser.accessLevel == 1
+                            option(value="1" selected) Employee
+                        if passedInUser.accessLevel == 2
+                            option(value="1" selected) Middle Manager
+                        if passedInUser.accessLevel == 3
+                            option(value="1" selected) Senior Manager
                 div(class="emp-form__item")
                     label(for="phone" class="emp-form__label") Phone Number
-                    input(type="text" class="emp-form__input" name="phone" id="phone")
+                    input(type="text" class="emp-form__input" name="phone" id="phone" placeholder=`${passedInUser.phoneNo}` readonly)
                 div(class="emp-form__item")
                     label(for="email" class="emp-form__label") Email
-                    input(type="text" class="emp-form__input" name="email" id="email")
+                    input(type="text" class="emp-form__input" name="email" id="email" placeholder=`${passedInUser.email}` readonly)
                 div(class="emp-form__item")
                     label(for="houseno" class="emp-form__label") House Number
-                    input(type="text" class="emp-form__input" name="houseno" id="houseno")
+                    input(type="text" class="emp-form__input" name="houseno" id="houseno" placeholder=`${passedInUser.houseNo}` readonly)
                 div(class="emp-form__item")
                     label(for="street" class="emp-form__label") Street
-                    input(type="text" class="emp-form__input" name="street" id="street")
+                    input(type="text" class="emp-form__input" name="street" id="street" placeholder=`${passedInUser.street}` readonly)
                 div(class="emp-form__item")
                     label(for="postcode" class="emp-form__label") Postcode
-                    input(type="text" class="emp-form__input" name="postcode" id="postcode")
+                    input(type="text" class="emp-form__input" name="postcode" id="postcode" placeholder=`${passedInUser.postcode}` readonly)
                 div(class="emp-form__item")
                     label(for="city" class="emp-form__label") City
-                    input(type="text" class="emp-form__input" name="city" id="city")
+                    input(type="text" class="emp-form__input" name="city" id="city" placeholder=`${passedInUser.city}` readonly)
                 div(class="emp-form__item")
-                    button(class="emp-form__button" type="submit") Update 
+                    a(href=`/employees/${passedInUser.staffNumber}/edit`)
+                        button(class="emp-form__button") Edit
