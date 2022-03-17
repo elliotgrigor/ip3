@@ -13,36 +13,40 @@ div#page-container
             form(class="emp-form")
                 div(class="emp-form__item")
                     label(for="firstname" class="emp-form__label") First Name 
-                    input(type="text" class="emp-form__input" name="firstname" id="firstname")
+                    input(type="text" class="emp-form__input" name="firstname" id="firstname" placeholder=`${loggedInUser.firstName}` readonly)
                 div(class="emp-form__item")
                     label(for="lastname" class="emp-form__label") Last Name 
-                    input(type="text" class="emp-form__input" name="lastname" id="lastname")
+                    input(type="text" class="emp-form__input" name="lastname" id="lastname" placeholder=`${loggedInUser.lastName}` readonly)
                 div(class="emp-form__item")
                     label(for="birthdate" class="emp-form__label") Date of Birth
-                    input(type="date" class="emp-form__input" name="birthdate" id="birthdate")
+                    input(type="date" class="emp-form__input" name="birthdate" id="birthdate" placeholder=`${loggedInUser.dateOfBirth}` readonly)
                 div(class="emp-form__item")
                     label(for="gender" class="emp-form__label") Gender
-                    select(class="emp-form__select" name="gender" id="gender")
-                        option(value="f") Female 
-                        option(value="m") Male
-                        option(value="o") Other  
+                    select(class="emp-form__select" name="gender" id="gender" disabled)
+                        if loggedInUser.gender == 'M'
+                            option(value="m") Male
+                        if loggedInUser.gender == 'F'
+                            option(value="m") Female
+                        if loggedInUser.gender == 'O'
+                            option(value="m") Other
                 div(class="emp-form__item")
                     label(for="phone" class="emp-form__label") Phone Number
-                    input(type="text" class="emp-form__input" name="phone" id="phone")
+                    input(type="text" class="emp-form__input" name="phone" id="phone" placeholder=`${loggedInUser.phoneNo}` readonly)
                 div(class="emp-form__item")
                     label(for="email" class="emp-form__label") Email
-                    input(type="text" class="emp-form__input" name="email" id="email")
+                    input(type="text" class="emp-form__input" name="email" id="email" placeholder=`${loggedInUser.email}` readonly)
                 div(class="emp-form__item")
                     label(for="houseno" class="emp-form__label") House Number
-                    input(type="text" class="emp-form__input" name="houseno" id="houseno")
+                    input(type="text" class="emp-form__input" name="houseno" id="houseno" placeholder=`${loggedInUser.houseNo}` readonly)
                 div(class="emp-form__item")
                     label(for="street" class="emp-form__label") Street
-                    input(type="text" class="emp-form__input" name="street" id="street")
+                    input(type="text" class="emp-form__input" name="street" id="street" placeholder=`${loggedInUser.street}` readonly)
                 div(class="emp-form__item")
                     label(for="postcode" class="emp-form__label") Postcode
-                    input(type="text" class="emp-form__input" name="postcode" id="postcode")
+                    input(type="text" class="emp-form__input" name="postcode" id="postcode" placeholder=`${loggedInUser.postcode}` readonly)
                 div(class="emp-form__item")
                     label(for="city" class="emp-form__label") City
-                    input(type="text" class="emp-form__input" name="city" id="city")
+                    input(type="text" class="emp-form__input" name="city" id="city" placeholder=`${loggedInUser.city}` readonly)
                 div(class="emp-form__item")
-                    button(class="emp-form__button" type="submit") Update 
+                    a(href="profile/edit")
+                        button(class="emp-form__button") Edit  
