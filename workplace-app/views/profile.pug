@@ -26,9 +26,9 @@ div#page-container
                         if loggedInUser.gender == 'M'
                             option(value="m") Male
                         if loggedInUser.gender == 'F'
-                            option(value="m") Female
+                            option(value="f") Female
                         if loggedInUser.gender == 'O'
-                            option(value="m") Other
+                            option(value="o") Other
                 div(class="emp-form__item")
                     label(for="phone" class="emp-form__label") Phone Number
                     input(type="text" class="emp-form__input" name="phone" id="phone" placeholder=`${loggedInUser.phoneNo}` readonly)
