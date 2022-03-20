@@ -46,6 +46,37 @@ exports.profile = (req, res) => {
 
 exports.editProfile = (req, res) => {
   // if GET, if POST
+  if(req.method == 'GET') {
+
+    let loggedInUser = {
+      accessLevel: req.user.access.level,
+      firstName: req.user.firstName,
+    };
+
+    db.employees.findOne(
+      { staffNumber: req.user.staffNumber },
+      (err, doc) => {
+        if(err) console.log(err);
+
+        loggedInUser = {
+          ...loggedInUser,
+          lastName: doc.lastName,
+          dateOfBirth: doc.dateOfBirth,
+          gender: doc.gender,
+          phoneNo: doc.contact.phone,
+          email: doc.contact.email,
+          houseNo: doc.contact.address.houseNumber,
+          street: doc.contact.address.street,
+          postcode: doc.contact.address.postCode,
+          city: doc.contact.address.city
+        }
+
+        console.log(loggedInUser.gender);
+        
+        res.render('editProfile', { loggedInUser });
+      }
+    );
+  }
 }
 
 exports.timeClock = (req, res) => {
@@ -102,6 +133,6 @@ exports.editEmployeeProfile = (req, res) => {
   res.render('editEmployeeDetails', {});
 }
 
-exports.editProfile = (req, res) => {
-  res.render('editMyDetails', {});
-}
+//exports.editProfile = (req, res) => {
+//  res.render('editMyDetails', {});
+//}
