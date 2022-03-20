@@ -153,7 +153,8 @@ exports.viewEmployee = (req, res) => {
         street: doc.contact.address.street,
         postcode: doc.contact.address.postCode,
         city: doc.contact.address.city,
-        accessLevel: doc.access.level
+        accessLevel: doc.access.level,
+        staffNumber: doc.staffNumber
       }
       
       res.render('employeeProfile', { loggedInUser, passedInUser });
@@ -166,7 +167,40 @@ exports.addEmployee = (req, res) => {
 }
 
 exports.editEmployee = (req, res) => {
-  res.render('editEmployeeProfile', {});
+  
+
+  if(req.method == 'GET') {
+
+    let loggedInUser = {
+      accessLevel: req.user.access.level,
+      name: req.user.firstName,
+    };
+
+    db.employees.findOne(
+      { staffNumber: req.params.staffNumber },
+      (err, doc) => {
+        if(err) console.log(err);
+  
+        let passedInUser = {
+          firstName: doc.firstName,
+          lastName: doc.lastName,
+          dateOfBirth: doc.dateOfBirth,
+          gender: doc.gender,
+          phoneNo: doc.contact.phone,
+          email: doc.contact.email,
+          houseNo: doc.contact.address.houseNumber,
+          street: doc.contact.address.street,
+          postcode: doc.contact.address.postCode,
+          city: doc.contact.address.city,
+          accessLevel: doc.access.level
+        }
+        
+        res.render('editEmployeeProfile', { loggedInUser, passedInUser });
+      }
+    );
+  }
+
+  //res.render('editEmployeeProfile', {});
 }
 
 exports.editEmployeeProfile = (req, res) => {
