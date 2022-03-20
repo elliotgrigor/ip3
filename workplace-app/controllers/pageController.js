@@ -124,8 +124,6 @@ exports.listEmployees = (req, res) => {
     (err, doc) => {
       if(err) return console.log(err);
 
-      console.log(doc);
-
       let employees = doc;
 
       res.render('employeeList', { loggedInUser, employees });
