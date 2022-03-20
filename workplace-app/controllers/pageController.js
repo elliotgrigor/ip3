@@ -12,11 +12,36 @@ exports.home = (req, res) => {
 }
 
 exports.profile = (req, res) => {
-  const loggedInUser = {
+  let loggedInUser = {
     accessLevel: req.user.access.level,
-    name: req.user.firstName,
+    firstName: req.user.firstName,
   };
-  res.render('profile', { loggedInUser });
+
+
+    //Works except error with showing the date
+    //Think this is just some minor problem with the date format and the input type="date"
+    db.employees.findOne(
+      { staffNumber: req.user.staffNumber },
+      (err, doc) => {
+        if(err) console.log(err);
+
+        loggedInUser = {
+          ...loggedInUser,
+          lastName: doc.lastName,
+          dateOfBirth: doc.dateOfBirth,
+          gender: doc.gender,
+          phoneNo: doc.contact.phone,
+          email: doc.contact.email,
+          houseNo: doc.contact.address.houseNumber,
+          street: doc.contact.address.street,
+          postcode: doc.contact.address.postCode,
+          city: doc.contact.address.city
+        }
+
+        res.render('profile', { loggedInUser });
+      }
+  );
+  
 }
 
 exports.editProfile = (req, res) => {
