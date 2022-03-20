@@ -11,13 +11,13 @@ div#page-container
             form(class="emp-form")
                 div(class="emp-form__item")
                     label(for="firstname" class="emp-form__label") First Name 
-                    input(type="text" class="emp-form__input" name="firstname" id="firstname" placeholder=`${loggedInUser.firstName}`)
+                    input(type="text" class="emp-form__input" name="firstname" id="firstname" value=`${loggedInUser.firstName}`)
                 div(class="emp-form__item")
                     label(for="lastname" class="emp-form__label") Last Name 
-                    input(type="text" class="emp-form__input" name="lastname" id="lastname" placeholder=`${loggedInUser.lastName}`)
+                    input(type="text" class="emp-form__input" name="lastname" id="lastname" value=`${loggedInUser.lastName}`)
                 div(class="emp-form__item")
                     label(for="birthdate" class="emp-form__label") Date of Birth
-                    input(type="text" onfocus="(this.type='date')" class="emp-form__input" name="birthdate" id="birthdate" placeholder=`${loggedInUser.dateOfBirth}`)
+                    input(type="text" onfocus="(this.type='date')" class="emp-form__input" name="birthdate" id="birthdate" value=`${loggedInUser.dateOfBirth}`)
                 div(class="emp-form__item")
                     label(for="gender" class="emp-form__label") Gender
                     select(class="emp-form__select" name="gender" id="gender")
@@ -35,21 +35,21 @@ div#page-container
                             option(value="o" selected="selected") Other
                 div(class="emp-form__item")
                     label(for="phone" class="emp-form__label") Phone Number
-                    input(type="text" class="emp-form__input" name="phone" id="phone" placeholder=`${loggedInUser.phoneNo}`)
+                    input(type="text" class="emp-form__input" name="phone" id="phone" value=`${loggedInUser.phoneNo}`)
                 div(class="emp-form__item")
                     label(for="email" class="emp-form__label") Email
-                    input(type="text" class="emp-form__input" name="email" id="email" placeholder=`${loggedInUser.email}`)
+                    input(type="text" class="emp-form__input" name="email" id="email" value=`${loggedInUser.email}`)
                 div(class="emp-form__item")
                     label(for="houseno" class="emp-form__label") House Number
-                    input(type="text" class="emp-form__input" name="houseno" id="houseno" placeholder=`${loggedInUser.houseNo}`)
+                    input(type="text" class="emp-form__input" name="houseno" id="houseno" value=`${loggedInUser.houseNo}`)
                 div(class="emp-form__item")
                     label(for="street" class="emp-form__label") Street
-                    input(type="text" class="emp-form__input" name="street" id="street" placeholder=`${loggedInUser.street}`)
+                    input(type="text" class="emp-form__input" name="street" id="street" value=`${loggedInUser.street}`)
                 div(class="emp-form__item")
                     label(for="postcode" class="emp-form__label") Postcode
-                    input(type="text" class="emp-form__input" name="postcode" id="postcode" placeholder=`${loggedInUser.postcode}`)
+                    input(type="text" class="emp-form__input" name="postcode" id="postcode" value=`${loggedInUser.postcode}`)
                 div(class="emp-form__item")
                     label(for="city" class="emp-form__label") City
-                    input(type="text" class="emp-form__input" name="city" id="city" placeholder=`${loggedInUser.city}`)
+                    input(type="text" class="emp-form__input" name="city" id="city" value=`${loggedInUser.city}`)
                 div(class="emp-form__item")
                     button(class="emp-form__button" type="submit") Update 

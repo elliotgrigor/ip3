@@ -114,7 +114,25 @@ exports.addShift = (req, res) => {
 
 
 exports.listEmployees = (req, res) => {
-  res.render('employees', {});
+  let loggedInUser = {
+    accessLevel: req.user.access.level,
+    name: req.user.firstName,
+  };
+
+  db.employees.find(
+    {}, 
+    (err, doc) => {
+      if(err) return console.log(err);
+
+      console.log(doc);
+
+      let employees = doc;
+
+      res.render('employeeList', { loggedInUser, employees });
+    }
+  );
+  
+  
 }
 
 exports.viewEmployee = (req, res) => {
