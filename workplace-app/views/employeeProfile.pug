@@ -17,7 +17,7 @@ div#page-container
                     input(type="text" class="emp-form__input" name="lastname" id="lastname" placeholder=`${passedInUser.lastName}` readonly)
                 div(class="emp-form__item")
                     label(for="birthdate" class="emp-form__label") Date of Birth
-                    input(type="date" class="emp-form__input" name="birthdate" id="birthdate" placeholder=`${passedInUser.dateOfBirth}` readonly)
+                    input(type="text" class="emp-form__input" name="birthdate" id="birthdate" placeholder=`${passedInUser.dateOfBirth}` readonly)
                 div(class="emp-form__item")
                     label(for="gender" class="emp-form__label") Gender
                     select(class="emp-form__select" name="gender" id="gender" disabled)
@@ -55,5 +55,4 @@ div#page-container
                     label(for="city" class="emp-form__label") City
                     input(type="text" class="emp-form__input" name="city" id="city" placeholder=`${passedInUser.city}` readonly)
                 div(class="emp-form__item")
-                    a(href=`/employees/${passedInUser.staffNumber}/edit`)
-                        button(class="emp-form__button") Edit
+                    a(href=`/employees/${passedInUser.staffNumber}/edit` class="emp-form__button") Edit
