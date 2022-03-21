@@ -36,35 +36,35 @@ div#page-container
                 div(class="emp-form__item")
                     label(for="employeetype" class="emp-form__label") Employee Type
                     select(class="emp-form__select" name="employeetype" id="employeetype")
-                        if passedInUser.accessLevel == 1
+                        if passedInUser.access.level == 1
                             option(value="1" selected="selected") Employee 
                             option(value="2") Middle Manager
                             option(value="3") Senior Manager
-                        if passedInUser.accessLevel == 2
+                        if passedInUser.access.level == 2
                             option(value="1") Employee 
                             option(value="2"  selected="selected") Middle Manager
                             option(value="3") Senior Manager
-                        if passedInUser.accessLevel == 3
+                        if passedInUser.access.level == 3
                             option(value="1") Employee 
                             option(value="2") Middle Manager
                             option(value="3" selected="selected") Senior Manager 
                 div(class="emp-form__item")
                     label(for="phone" class="emp-form__label") Phone Number
-                    input(type="text" class="emp-form__input" name="phone" id="phone" value=`${passedInUser.phoneNo}`)
+                    input(type="text" class="emp-form__input" name="phone" id="phone" value=`${passedInUser.contact.phone}`)
                 div(class="emp-form__item")
                     label(for="email" class="emp-form__label") Email
-                    input(type="text" class="emp-form__input" name="email" id="email" value=`${passedInUser.email}`)
+                    input(type="text" class="emp-form__input" name="email" id="email" value=`${passedInUser.contact.email}`)
                 div(class="emp-form__item")
                     label(for="houseno" class="emp-form__label") House Number
-                    input(type="text" class="emp-form__input" name="houseno" id="houseno" value=`${passedInUser.houseNo}`)
+                    input(type="text" class="emp-form__input" name="houseno" id="houseno" value=`${passedInUser.contact.address.houseNumber}`)
                 div(class="emp-form__item")
                     label(for="street" class="emp-form__label") Street
-                    input(type="text" class="emp-form__input" name="street" id="street" value=`${passedInUser.street}`)
+                    input(type="text" class="emp-form__input" name="street" id="street" value=`${passedInUser.contact.address.street}`)
                 div(class="emp-form__item")
                     label(for="postcode" class="emp-form__label") Postcode
-                    input(type="text" class="emp-form__input" name="postcode" id="postcode" value=`${passedInUser.postcode}`)
+                    input(type="text" class="emp-form__input" name="postcode" id="postcode" value=`${passedInUser.contact.address.postCode}`)
                 div(class="emp-form__item")
                     label(for="city" class="emp-form__label") City
-                    input(type="text" class="emp-form__input" name="city" id="city" value=`${passedInUser.city}`)
+                    input(type="text" class="emp-form__input" name="city" id="city" value=`${passedInUser.contact.address.city}`)
                 div(class="emp-form__item")
                     button(class="emp-form__button" type="submit") Update  

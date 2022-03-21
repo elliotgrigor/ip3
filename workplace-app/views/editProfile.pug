@@ -35,21 +35,21 @@ div#page-container
                             option(value="o" selected="selected") Other
                 div(class="emp-form__item")
                     label(for="phone" class="emp-form__label") Phone Number
-                    input(type="text" class="emp-form__input" name="phone" id="phone" value=`${loggedInUser.phoneNo}`)
+                    input(type="text" class="emp-form__input" name="phone" id="phone" value=`${loggedInUser.contact.phone}`)
                 div(class="emp-form__item")
                     label(for="email" class="emp-form__label") Email
-                    input(type="text" class="emp-form__input" name="email" id="email" value=`${loggedInUser.email}`)
+                    input(type="text" class="emp-form__input" name="email" id="email" value=`${loggedInUser.contact.email}`)
                 div(class="emp-form__item")
                     label(for="houseno" class="emp-form__label") House Number
-                    input(type="text" class="emp-form__input" name="houseno" id="houseno" value=`${loggedInUser.houseNo}`)
+                    input(type="text" class="emp-form__input" name="houseno" id="houseno" value=`${loggedInUser.contact.address.houseNumber}`)
                 div(class="emp-form__item")
                     label(for="street" class="emp-form__label") Street
-                    input(type="text" class="emp-form__input" name="street" id="street" value=`${loggedInUser.street}`)
+                    input(type="text" class="emp-form__input" name="street" id="street" value=`${loggedInUser.contact.address.street}`)
                 div(class="emp-form__item")
                     label(for="postcode" class="emp-form__label") Postcode
-                    input(type="text" class="emp-form__input" name="postcode" id="postcode" value=`${loggedInUser.postcode}`)
+                    input(type="text" class="emp-form__input" name="postcode" id="postcode" value=`${loggedInUser.contact.address.postCode}`)
                 div(class="emp-form__item")
                     label(for="city" class="emp-form__label") City
-                    input(type="text" class="emp-form__input" name="city" id="city" value=`${loggedInUser.city}`)
+                    input(type="text" class="emp-form__input" name="city" id="city" value=`${loggedInUser.contact.address.city}`)
                 div(class="emp-form__item")
                     button(class="emp-form__button" type="submit") Update 

@@ -31,22 +31,22 @@ div#page-container
                             option(value="o") Other
                 div(class="emp-form__item")
                     label(for="phone" class="emp-form__label") Phone Number
-                    input(type="text" class="emp-form__input" name="phone" id="phone" placeholder=`${loggedInUser.phoneNo}` readonly)
+                    input(type="text" class="emp-form__input" name="phone" id="phone" placeholder=`${loggedInUser.contact.phone}` readonly)
                 div(class="emp-form__item")
                     label(for="email" class="emp-form__label") Email
-                    input(type="text" class="emp-form__input" name="email" id="email" placeholder=`${loggedInUser.email}` readonly)
+                    input(type="text" class="emp-form__input" name="email" id="email" placeholder=`${loggedInUser.contact.email}` readonly)
                 div(class="emp-form__item")
                     label(for="houseno" class="emp-form__label") House Number
-                    input(type="text" class="emp-form__input" name="houseno" id="houseno" placeholder=`${loggedInUser.houseNo}` readonly)
+                    input(type="text" class="emp-form__input" name="houseno" id="houseno" placeholder=`${loggedInUser.contact.address.house}` readonly)
                 div(class="emp-form__item")
                     label(for="street" class="emp-form__label") Street
-                    input(type="text" class="emp-form__input" name="street" id="street" placeholder=`${loggedInUser.street}` readonly)
+                    input(type="text" class="emp-form__input" name="street" id="street" placeholder=`${loggedInUser.contact.address.street}` readonly)
                 div(class="emp-form__item")
                     label(for="postcode" class="emp-form__label") Postcode
-                    input(type="text" class="emp-form__input" name="postcode" id="postcode" placeholder=`${loggedInUser.postcode}` readonly)
+                    input(type="text" class="emp-form__input" name="postcode" id="postcode" placeholder=`${loggedInUser.contact.address.postCode}` readonly)
                 div(class="emp-form__item")
                     label(for="city" class="emp-form__label") City
-                    input(type="text" class="emp-form__input" name="city" id="city" placeholder=`${loggedInUser.city}` readonly)
+                    input(type="text" class="emp-form__input" name="city" id="city" placeholder=`${loggedInUser.contact.address.city}` readonly)
                 div(class="emp-form__item")
                     a(href="profile/edit" class="emp-form__button") Edit 
                         

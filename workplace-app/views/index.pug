@@ -21,13 +21,13 @@ div#page-container
     div#content-container
         div(class="flex-row-container centre-flex-row-items" style="margin-top: var(--medium-px)")
             div(class="title-text-box" style="padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;").
-                Welcome to your G9 #{loggedInUser.accessLevel >= 2 ? "Manager" : "Employee"} dashboard, #{loggedInUser.name}!
+                Welcome to your G9 #{loggedInUser.access.level >= 2 ? "Manager" : "Employee"} dashboard, #{loggedInUser.firstName}!
         div(class="flex-row-container centre-flex-row-items medium-space list-left-medium-space")
-            if loggedInUser.accessLevel === 1
+            if loggedInUser.access.level === 1
                 +card(payslipsCard)
                 +card(myDetailsCard)
                 +card(punchInCard)
-            if loggedInUser.accessLevel >= 2
+            if loggedInUser.access.level >= 2
                 +card(payslipsCard)
                 +card(myDetailsCard)
                 +card(punchInCard)

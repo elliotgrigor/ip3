@@ -7,7 +7,7 @@ div#taskbar-container(class="blue-background")
         img(src="/res/person.svg", alt="person logo")   
     a(href="/timeClock")
         img(src="/res/clock.svg", alt="clock logo")
-    if loggedInUser.accessLevel >= 2
+    if loggedInUser.access.level >= 2
         a(href="/rota")
             img(src="/res/calendar.svg", alt="calendar logo")
         a(href="/employees")
