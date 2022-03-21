@@ -10,8 +10,9 @@ mixin loopEmployees(employeesIn)
             td= employee.gender
             td
                 a(href=`/employees/${employee.staffNumber}`) View | 
-                a(href=`/employees/${employee.staffNumber}/edit`) Edit |
-                a(href=`/employees/${employee.staffNumber}/delete`)  Delete 
+                a(href=`/employees/${employee.staffNumber}/edit`) Edit 
+                if loggedInUser.accessLevel > 2 
+                    a(href=`/employees/${employee.staffNumber}/delete`) | Delete 
 
 include includes/header.pug
 div#page-container 
@@ -28,6 +29,17 @@ div#page-container
                         th Last Name  
                         th Employee / Manager 
                         th Gender
-                        th View / Edit / Delete
+                        if loggedInUser.accessLevel > 2
+                            th Add / View / Edit / Delete
+                        else 
+                            th View / Edit
                 tbody
+                    if loggedInUser.accessLevel > 2
+                        tr 
+                            td 
+                            td 
+                            td 
+                            td 
+                            td
+                                a(href="/employees/add") Add New Employee
                     +loopEmployees(employees)
