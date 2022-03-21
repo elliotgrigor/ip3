@@ -1,4 +1,5 @@
 const { render } = require('pug');
+const fetch = require('node-fetch');
 
 const db = require('../../api/controllers/dbController');
 db.load();
@@ -17,29 +18,28 @@ exports.profile = (req, res) => {
     firstName: req.user.firstName,
   };
 
+  //Works except error with showing the date
+  //Think this is just some minor problem with the date format and the input type="date"
+  db.employees.findOne(
+    { staffNumber: req.user.staffNumber },
+    (err, doc) => {
+      if(err) console.log(err);
 
-    //Works except error with showing the date
-    //Think this is just some minor problem with the date format and the input type="date"
-    db.employees.findOne(
-      { staffNumber: req.user.staffNumber },
-      (err, doc) => {
-        if(err) console.log(err);
-
-        loggedInUser = {
-          ...loggedInUser,
-          lastName: doc.lastName,
-          dateOfBirth: doc.dateOfBirth,
-          gender: doc.gender,
-          phoneNo: doc.contact.phone,
-          email: doc.contact.email,
-          houseNo: doc.contact.address.houseNumber,
-          street: doc.contact.address.street,
-          postcode: doc.contact.address.postCode,
-          city: doc.contact.address.city
-        }
-
-        res.render('profile', { loggedInUser });
+      loggedInUser = {
+        ...loggedInUser,
+        lastName: doc.lastName,
+        dateOfBirth: doc.dateOfBirth,
+        gender: doc.gender,
+        phoneNo: doc.contact.phone,
+        email: doc.contact.email,
+        houseNo: doc.contact.address.houseNumber,
+        street: doc.contact.address.street,
+        postcode: doc.contact.address.postCode,
+        city: doc.contact.address.city
       }
+
+      res.render('profile', { loggedInUser });
+    }
   );
   
 }
@@ -136,6 +136,13 @@ exports.viewEmployee = (req, res) => {
     accessLevel: req.user.access.level,
     name: req.user.firstName,
   };
+
+  // fetch(`http://localhost:3001/api/v1/get/employee/id/${req.user.staffNumber}`)
+  //   .then(res => res.json())
+  //   .then(json => {
+  //       res.render('profile', { loggedInUser: json.employee });
+  //   })
+  //   .catch(err => console.log(err));
 
   db.employees.findOne(
     { staffNumber: req.params.staffNumber },
