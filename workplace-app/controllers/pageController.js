@@ -13,7 +13,7 @@ exports.profile = (req, res) => {
 }
 
 exports.editProfile = (req, res) => {
-  if(req.method == 'GET') {
+  if (req.method == 'GET') {
     res.render('editProfile', { loggedInUser: req.user });
   }
 }
@@ -34,29 +34,40 @@ exports.addShift = (req, res) => {
   res.render('addShift', {});
 }
 
-
 exports.listEmployees = (req, res) => {
-  fetch(`http://localhost:3001/api/v1/get/employee/all`)
-    .then(res => res.json())
-    .then(json => {
-      res.render('employeeList', {
-        loggedInUser: req.user,
-        employees: json.employees,
-      });
-    })
-    .catch(err => console.log(err));
+  if (req.user.access.level === 3) {
+    fetch(`http://localhost:3001/api/v1/get/employee/level/1-2`)
+      .then(res => res.json())
+      .then(json => {
+        res.render('employeeList', {
+          loggedInUser: req.user,
+          employees: json.employees,
+        });
+      })
+      .catch(err => console.log(err));
+  }
 }
 
 exports.viewEmployee = (req, res) => {
-  fetch(`http://localhost:3001/api/v1/get/employee/id/${req.params.staffNumber}`)
-    .then(res => res.json())
-    .then(json => {
-      res.render('employeeProfile', {
-        loggedInUser: req.user,
-        passedInUser: json.employee,
-      });
-    })
-    .catch(err => console.log(err));
+  db.employees.findOne(
+    { staffNumber: req.params.staffNumber },
+    { 'access.level': 1 },
+    (err, doc) => {
+      if (doc.access.level !== req.user.access.level) {
+        fetch(`http://localhost:3001/api/v1/get/employee/id/${req.params.staffNumber}`)
+          .then(res => res.json())
+          .then(json => {
+            res.render('employeeProfile', {
+              loggedInUser: req.user,
+              passedInUser: json.employee,
+            });
+          })
+          .catch(err => console.log(err));
+      } else {
+        res.redirect('/employees');
+      }
+    }
+  );
 }
 
 exports.addEmployee = (req, res) => {
