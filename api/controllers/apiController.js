@@ -1,12 +1,4 @@
 const db = require('./dbController.js');
-const {
-  EmployeeModel,
-  AccessModel,
-  AddressModel,
-  ContactModel,
-  DailyHoursModel,
-  PayslipModel,
-} = require('../models/EmployeeModel');
 
 exports.getAllEmployees = (req, res) => {
   db.employees.find({}, (err, docs) => {
@@ -15,9 +7,19 @@ exports.getAllEmployees = (req, res) => {
   });
 }
 
+exports.getEmployeeById = (req, res) => {
+  db.employees.findOne(
+    { staffNumber: req.params.staffNumber },
+    (err, doc) => {
+      if (err) return console.log(err);
+      res.json({ employee: doc });
+    }
+  );
+}
+
 exports.getEmployeesByLevel = (req, res) => {
   db.employees.find(
-    { 'access.level': req.params.accessLevel },
+    { 'access.level': parseInt(req.params.accessLevel) },
     (err, docs) => {
       if (err) return console.log(err);
       res.json({ employees: docs });
