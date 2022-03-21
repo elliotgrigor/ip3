@@ -27,7 +27,7 @@ exports.payslips = (req, res) => {
 }
 
 exports.viewRota = (req, res) => {
-  res.render('rota', {});
+  res.render('rota', { loggedInUser: req.user });
 }
 
 exports.addShift = (req, res) => {
