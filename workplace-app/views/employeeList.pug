@@ -6,8 +6,8 @@ mixin loopEmployees(employeesIn)
         tr 
             td= employee.firstName 
             td= employee.lastName  
-            td= employee.age
-            td= employee.address 
+            td= employee.access.level > 1 ? "Manager" : "Employee"
+            td= employee.gender
             td
                 a(href=`/employees/${employee.staffNumber}`) View | 
                 a(href=`/employees/${employee.staffNumber}/edit`) Edit |
@@ -26,8 +26,8 @@ div#page-container
                     tr
                         th First Name   
                         th Last Name  
-                        th Age 
-                        th Address 
+                        th Employee / Manager 
+                        th Gender
                         th View / Edit / Delete
                 tbody
                     +loopEmployees(employees)
