@@ -19,11 +19,7 @@ exports.editProfile = (req, res) => {
 }
 
 exports.timeClock = (req, res) => {
-  const loggedInUser = {
-    accessLevel: req.user.access.level,
-    name: req.user.firstName,
-  };
-  res.render('timeClock', { loggedInUser });
+  res.render('timeClock', { loggedInUser: req.user });
 }
 
 exports.payslips = (req, res) => {
