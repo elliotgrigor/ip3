@@ -13,6 +13,7 @@ const auth = require('./routes/authRoutes');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:false}));
 app.set('view engine', 'pug');
+
 app.use(session({
   secret: process.env.SECRET,
   resave: false,
