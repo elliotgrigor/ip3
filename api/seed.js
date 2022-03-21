@@ -69,11 +69,11 @@ bcrypt.genSalt(10, (err, salt) => {
       profilePic   = '/img/image.png',
       access       = { level: 3 },
       password     = hash,
-      contact      = null,
-      daysWorked   = [null],
+      contact      = johnContact,
+      daysWorked   = [johnDailyHours],
       payRate      = 12.80,
       natInsNumber = 'AB123456C',
-      payslips     = [null],
+      payslips     = [johnPayslip],
     );
 
     const joe = new EmployeeModel(
@@ -85,11 +85,11 @@ bcrypt.genSalt(10, (err, salt) => {
       profilePic   = '/img/image.png',
       access       = { level: 1 },
       password     = hash,
-      contact      = null,
-      daysWorked   = [null],
+      contact      = johnContact,
+      daysWorked   = [johnDailyHours],
       payRate      = 12.80,
       natInsNumber = 'AB123456C',
-      payslips     = [null],
+      payslips     = [johnPayslip],
     );
 
     employees.insert([john, jane, joe], (err, newDoc) => {
