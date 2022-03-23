@@ -2,7 +2,6 @@ const { render } = require('pug');
 const fetch = require('node-fetch');
 
 const db = require('../../api/controllers/dbController');
-db.load();
 
 exports.home = (req, res) => {
   res.render('index', { loggedInUser: req.user });
