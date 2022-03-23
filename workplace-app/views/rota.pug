@@ -1,25 +1,18 @@
 //Function to add all the shifts to the table for the specific day - pass in a list of shifts 
-mixin loopShifts(daysShifts)
-    each shift in daysShifts
-        tr 
-            td 
-            td= shift.name 
-            td= shift.startTime 
-            td= shift.endTime
-            td 
-                button Edit 
-                button Delete 
-
-//Function to add a row to make a header of that days shifts - pass in the day as a string
-mixin daysHeader(day)
-    tr 
-        td= day 
-        td 
-        td 
-        td
-        td 
-            a(href="addShift.html")
-                button Add
+mixin loopShifts(weekRota)
+    each person in weekRota
+        tr
+            td
+                //Possible click the persons name to add shift and can select day too?
+                //Or could just click on the day
+                a(href="#")= person.name 
+            td= person.mon 
+            td= person.tue
+            td= person.wed 
+            td= person.thu 
+            td= person.fri 
+            td= person.sat 
+            td= person.sun
 
 include includes/header.pug
 div#page-container 
@@ -29,26 +22,18 @@ div#page-container
             div(class="title-text-box blue-title-text-box" style="padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;").
                 Rota
         div(class="scroll-flex-row-container centre-flex-row-items" style="margin-top: var(--medium-px)") 
-            table(class="rota-table") 
-                thead 
-                    tr
-                        th Day 
-                        th Employee 
-                        th Start Time 
-                        th End Time 
-                        th Add / Edit / Delete
-                tbody 
-                    +daysHeader("Monday")
-                    +loopShifts(mondayShifts)
-                    +daysHeader("Tuesday")
-                    +loopShifts(tuesdayShifts)
-                    +daysHeader("Wednesday")
-                    +loopShifts(wednesdayShifts)
-                    +daysHeader("Thursday")
-                    +loopShifts(thursdayShifts)
-                    +daysHeader("Friday")
-                    +loopShifts(fridayShifts)
-                    +daysHeader("Saturday")
-                    +loopShifts(satudayShifts)
-                    +daysHeader("Sunday")
-                    +loopShifts(sundayShifts)
+            div(style="overflow:auto") 
+                table(class="rota-table") 
+                    thead 
+                        tr
+                            th Employee 
+                            th Monday 
+                            th Tuesday 
+                            th Wednesday  
+                            th Thursday
+                            th Friday
+                            th Saturday
+                            th Sunday
+                    tbody 
+                        //Need to pass in the rota for the week 
+                        +loopShifts(week1Rota)
