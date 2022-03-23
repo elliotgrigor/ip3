@@ -4,7 +4,6 @@ const express = require('express');
 const app = express();
 
 const db = require('./controllers/dbController');
-db.load();
 
 const routes = require('./routes/apiRoutes');
 app.use('/api/v1', routes);
