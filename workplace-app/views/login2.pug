@@ -1,0 +1,16 @@
+include includes/header.pug
+
+div.viewport
+  div.login
+    img.login__img(src="" alt="Logo")
+
+    form.login__form(action="/login" method="post")
+      div.login__formgroup
+        label.login__label(for="username") Staff ID
+        input.login__input(type="text" name="username")
+
+      div.login__formgroup
+        label.login__label(for="password") Password
+        input.login__input(type="password" name="password")
+
+      input.login__button(type="submit" value="Log in")

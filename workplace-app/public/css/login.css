@@ -1,0 +1,49 @@
+.viewport {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  width: 40rem;
+  height: 30rem;
+  margin: 2rem;
+  border: 1px solid lightgrey;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login__img {
+  transform: translateY(-8.5rem);
+}
+.login__form {
+  transform: translateY(1.2rem);
+}
+.login__formgroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+.login__label {
+  width: 24rem;
+  margin-bottom: 5px;
+}
+.login__input {
+  width: 24rem;
+  border: 1px solid grey;
+  padding: 0.5rem;
+}
+.login__button {
+  border: 1px solid blueviolet;
+  background: #fff;
+  padding: 10px 20px;
+}
+.login__button:hover {
+  background: blueviolet;
+  color: white;
+}
