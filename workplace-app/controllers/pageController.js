@@ -1,4 +1,3 @@
-const { render } = require('pug');
 const fetch = require('node-fetch');
 
 const db = require('../../api/controllers/dbController');
