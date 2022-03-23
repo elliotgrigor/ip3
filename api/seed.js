@@ -1,14 +1,13 @@
 const bcrypt = require('bcrypt');
 
 const db = require('./controllers/dbController');
-db.load();
 
 const {
   EmployeeModel, AccessModel, AddressModel,
   ContactModel, DailyHoursModel,PayslipModel,
 } = require('./models/EmployeeModel');
 
-const { employees } = require('./controllers/dbController.js');
+const { employees, rotas } = require('./controllers/dbController.js');
 
 const johnAccess = new AccessModel(level = 2);
 
@@ -92,9 +91,47 @@ bcrypt.genSalt(10, (err, salt) => {
       payslips     = [johnPayslip],
     );
 
-    employees.insert([john, jane, joe], (err, newDoc) => {
+    employees.insert([john, jane, joe], (err, newDocs) => {
       if (err) return console.log(err);
-      console.log(newDoc);
+      console.log(newDocs);
     });
   });
+});
+
+rotas.insert([
+  { week1: {
+    jane: {
+      name: 'Jane',
+      mon: ['1400', '2100'],
+      tue: null,
+      wed: ['0900', '1500'],
+      thu: ['1200', '1900'],
+      fri: null,
+      sat: ['0830', '1215'],
+      sun: ['1620', '2210'],
+    },
+    joe: {
+      name: 'Joe',
+      mon: ['1400', '2100'],
+      tue: null,
+      wed: ['0900', '1500'],
+      thu: ['1200', '1900'],
+      fri: null,
+      sat: ['0830', '1215'],
+      sun: ['1620', '2210'],
+    },
+    john: {
+      name: 'John',
+      mon: ['1400', '2100'],
+      tue: null,
+      wed: ['0900', '1500'],
+      thu: ['1200', '1900'],
+      fri: null,
+      sat: ['0830', '1215'],
+      sun: ['1620', '2210'],
+    },
+  } },
+], (err, newDocs) => {
+  if (err) console.log(err);
+  console.log('Inserted:', newDocs);
 });
