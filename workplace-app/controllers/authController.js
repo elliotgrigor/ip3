@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 
-const db = require('../../api/controllers/dbController');
+const db = require('./dbController');
 
 passport.use(new LocalStrategy(function verify(username, password, cb) {
   db.employees.findOne(

@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-const db = require('../../api/controllers/dbController');
+const db = require('./dbController');
 
 exports.home = (req, res) => {
   res.render('index', { loggedInUser: req.user });
