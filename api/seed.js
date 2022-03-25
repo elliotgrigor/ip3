@@ -99,28 +99,9 @@ bcrypt.genSalt(10, (err, salt) => {
 });
 
 rotas.insert([
-  { week1: {
-    jane: {
-      name: 'Jane',
-      mon: ['1400', '2100'],
-      tue: null,
-      wed: ['0900', '1500'],
-      thu: ['1200', '1900'],
-      fri: null,
-      sat: ['0830', '1215'],
-      sun: ['1620', '2210'],
-    },
-    joe: {
-      name: 'Joe',
-      mon: ['1400', '2100'],
-      tue: null,
-      wed: ['0900', '1500'],
-      thu: ['1200', '1900'],
-      fri: null,
-      sat: ['0830', '1215'],
-      sun: ['1620', '2210'],
-    },
-    john: {
+  { week1: [
+    {
+      staffId: 'A001',
       name: 'John',
       mon: ['1400', '2100'],
       tue: null,
@@ -130,7 +111,29 @@ rotas.insert([
       sat: ['0830', '1215'],
       sun: ['1620', '2210'],
     },
-  } },
+    {
+      staffId: 'A002',
+      name: 'Jane',
+      mon: ['1400', '2100'],
+      tue: null,
+      wed: ['0900', '1500'],
+      thu: ['1200', '1900'],
+      fri: null,
+      sat: ['0830', '1215'],
+      sun: ['1620', '2210'],
+    },
+    {
+      staffId: 'A003',
+      name: 'Joe',
+      mon: ['1400', '2100'],
+      tue: null,
+      wed: ['0900', '1500'],
+      thu: ['1200', '1900'],
+      fri: null,
+      sat: ['0830', '1215'],
+      sun: ['1620', '2210'],
+    },
+  ] },
 ], (err, newDocs) => {
   if (err) console.log(err);
   console.log('Inserted:', newDocs);
