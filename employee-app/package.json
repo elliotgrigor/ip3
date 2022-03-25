@@ -11,9 +11,12 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@gristlabs/connect-sqlite3": "^0.9.11-grist.4",
+    "@seald-io/nedb": "^3.0.0",
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "express-session": "^1.17.2",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
     "pug": "^3.0.2"
