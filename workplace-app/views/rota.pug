@@ -1,18 +1,43 @@
 //Function to add all the shifts to the table for the specific day - pass in a list of shifts 
-mixin loopShifts(weekRota)
-    each person in weekRota
+mixin loopShifts(week)
+    each person in week
         tr
+            td= person.name 
             td
-                //Possible click the persons name to add shift and can select day too?
-                //Or could just click on the day
-                a(href="#")= person.name 
-            td= person.mon 
-            td= person.tue
-            td= person.wed 
-            td= person.thu 
-            td= person.fri 
-            td= person.sat 
-            td= person.sun
+                if person.mon
+                    a(href=`/rota/${weekRota.weekStart}/mon/${person.staffId}/edit`)= person.mon 
+                else 
+                    a(href=`/rota/${weekRota.weekStart}/mon/${person.staffId}/add`) ----
+            td 
+                if person.tue
+                    a(href=`/rota/${weekRota.weekStart}/tue/${person.staffId}/edit`)= person.tue
+                else 
+                    a(href=`/rota/${weekRota.weekStart}/tue/${person.staffId}/add`) ----
+            td 
+                if person.wed
+                    a(href=`/rota/${weekRota.weekStart}/wed/${person.staffId}/edit`)= person.wed 
+                else 
+                    a(href=`/rota/${weekRota.weekStart}/wed/${person.staffId}/add`) ---- 
+            td 
+                if person.thu
+                    a(href=`/rota/${weekRota.weekStart}/thu/${person.staffId}/edit`)= person.thu
+                else 
+                    a(href=`/rota/${weekRota.weekStart}/thu/${person.staffId}/add`) ----
+            td 
+                if person.fri
+                    a(href=`/rota/${weekRota.weekStart}/fri/${person.staffId}/edit`)= person.fri 
+                else 
+                    a(href=`/rota/${weekRota.weekStart}/fri/${person.staffId}/add`) ---- 
+            td 
+                if person.sat
+                    a(href=`/rota/${weekRota.weekStart}/sat/${person.staffId}/edit`)= person.sat 
+                else 
+                    a(href=`/rota/${weekRota.weekStart}/sat/${person.staffId}/add`) ----
+            td 
+                if person.sun
+                    a(href=`/rota/${weekRota.weekStart}/sun/${person.staffId}/edit`)= person.sun
+                else 
+                    a(href=`/rota/${weekRota.weekStart}/sun/${person.staffId}/add`) ----
 
 include includes/header.pug
 div#page-container 
@@ -36,4 +61,4 @@ div#page-container
                             th Sunday
                     tbody 
                         //Need to pass in the rota for the week 
-                        +loopShifts(week1Rota)
+                        +loopShifts(weekRota)
