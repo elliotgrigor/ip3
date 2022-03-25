@@ -100,7 +100,7 @@ bcrypt.genSalt(10, (err, salt) => {
 
 rotas.insert([
   { weekStart: new Date('2022-04-04').toISOString().split('T')[0],
-    week1: [
+    staffSchedule: [
     {
       staffId: 'A001',
       name: 'John',
@@ -136,7 +136,7 @@ rotas.insert([
     },
   ] },
   { weekStart: new Date('2022-04-11').toISOString().split('T')[0],
-    week1: [
+    staffSchedule: [
     {
       staffId: 'A001',
       name: 'John',
@@ -172,7 +172,7 @@ rotas.insert([
     },
   ] },
   { weekStart: new Date('2022-04-18').toISOString().split('T')[0],
-    week1: [
+    staffSchedule: [
     {
       staffId: 'A001',
       name: 'John',
