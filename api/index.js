@@ -4,8 +4,8 @@ const express = require('express');
 const app = express();
 
 const db = require('./controllers/dbController');
-
 const routes = require('./routes/apiRoutes');
+
 app.use('/api/v1', routes);
 
 app.listen(process.env.PORT, process.env.IP, () => {
