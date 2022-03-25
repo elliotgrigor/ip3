@@ -1,14 +1,14 @@
-const db = require('./dbController.js');
+const { employees } = require('./dbController.js');
 
-exports.getAllEmployees = (req, res) => {
-  db.employees.find({}, (err, docs) => {
+exports.getAll = (req, res) => {
+  employees.find({}, (err, docs) => {
     if (err) return console.log(err);
     res.json({ employees: docs });
   });
 }
 
-exports.getEmployeeById = (req, res) => {
-  db.employees.findOne(
+exports.getById = (req, res) => {
+  employees.findOne(
     { staffNumber: req.params.staffNumber },
     (err, doc) => {
       if (err) return console.log(err);
@@ -17,11 +17,11 @@ exports.getEmployeeById = (req, res) => {
   );
 }
 
-exports.getEmployeesByLevel = (req, res) => {
+exports.getByLevel = (req, res) => {
   const accessLevel = req.params.accessLevel;
 
   if (accessLevel === '1-2') {
-    return db.employees.find(
+    return employees.find(
       { 'access.level': { $in: [1, 2] } },
       (err, docs) => {
         if (err) return console.log(err);
@@ -30,7 +30,7 @@ exports.getEmployeesByLevel = (req, res) => {
     );
   }
 
-  return db.employees.find(
+  return employees.find(
     { 'access.level': parseInt(accessLevel) },
     (err, docs) => {
       if (err) return console.log(err);
