@@ -25,7 +25,16 @@ exports.payslips = (req, res) => {
 }
 
 exports.viewRota = (req, res) => {
-  res.render('rota', { loggedInUser: req.user });
+  // fetch(`http://localhost:3001/api/v1/get/rota/week/${req.params.weekStart}`)
+  fetch(`http://localhost:3001/api/v1/get/rota/week/2022-04-04`)
+    .then(res => res.json())
+    .then(json => {
+      res.render('rota', {
+        rota: json.rota,
+        loggedInUser: req.user,
+      });
+    })
+    .catch(err => console.log(err));
 }
 
 exports.addShift = (req, res) => {
