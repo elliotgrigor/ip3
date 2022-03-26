@@ -2,7 +2,3 @@ node_modules/
 db/
 package-lock.json
 .env
-run.sh
-runApi.sh
-runWApp.sh
-runEApp.sh
