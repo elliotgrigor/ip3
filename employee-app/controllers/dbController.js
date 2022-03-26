@@ -1,11 +1,11 @@
 const Datastore = require('@seald-io/nedb');
 
 exports.employees = new Datastore({
-  filename: '../db/employees.collection',
+  filename: process.env.EMPLOYEE_DB,
   autoload: true,
 });
 
 exports.rotas = new Datastore({
-  filename: '../db/rotas.collection',
+  filename: process.env.ROTA_DB,
   autoload: true,
 });
