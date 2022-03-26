@@ -93,7 +93,7 @@ bcrypt.genSalt(10, (err, salt) => {
 
     employees.insert([john, jane, joe], (err, newDocs) => {
       if (err) return console.log(err);
-      console.log(newDocs);
+      console.log('Inserted:', newDocs);
     });
   });
 });
