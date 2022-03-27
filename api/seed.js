@@ -10,7 +10,7 @@ bcrypt.genSalt(10, (err, salt) => {
       staffNumber: 'A001',
       firstName: 'John',
       lastName: 'Smith',
-      dateOfBirth: new Date(),
+      dateOfBirth: new Date('1989-01-27').toISOString().split('T')[0],
       gender: 'M',
       profilePic: '/img/image.png',
       access: { level: 2 },
@@ -26,9 +26,9 @@ bcrypt.genSalt(10, (err, salt) => {
         email: 'john@email.com',
       },
       daysWorked: [{
-        forDate: new Date(),
-        startTime: new Date(),
-        finishTime: new Date(),
+        forDate: new Date().toISOString().split('T')[0],
+        startTime: new Date().toISOString().split('T')[1],
+        finishTime: new Date().toISOString().split('T')[1],
         dailyHours: 8.03,
       }],
       payRate: 8.95,
@@ -40,7 +40,7 @@ bcrypt.genSalt(10, (err, salt) => {
         incomeTax: 50.00,
         taxCode: 'S1250',
         pensionContrib: 100.00,
-        issueDate: new Date(),
+        issueDate: new Date().toISOString().split('T')[0],
       }],
     };
 
@@ -48,7 +48,7 @@ bcrypt.genSalt(10, (err, salt) => {
       staffNumber: 'A002',
       firstName: 'Jane',
       lastName: 'Frankenstein',
-      dateOfBirth: new Date(),
+      dateOfBirth: new Date('2001-09-03').toISOString().split('T')[0],
       gender: 'F',
       profilePic: '/img/image.png',
       access: { level: 3 },
@@ -64,9 +64,9 @@ bcrypt.genSalt(10, (err, salt) => {
         email: 'jane@email.com',
       },
       daysWorked: [{
-        forDate: new Date(),
-        startTime: new Date(),
-        finishTime: new Date(),
+        forDate: new Date().toISOString().split('T')[0],
+        startTime: new Date().toISOString().split('T')[1],
+        finishTime: new Date().toISOString().split('T')[1],
         dailyHours: 8.03,
       }],
       payRate: 12.80,
@@ -78,7 +78,7 @@ bcrypt.genSalt(10, (err, salt) => {
         incomeTax: 50.00,
         taxCode: 'S1250',
         pensionContrib: 100.00,
-        issueDate: new Date(),
+        issueDate: new Date().toISOString().split('T')[0],
       }],
     };
 
@@ -86,7 +86,7 @@ bcrypt.genSalt(10, (err, salt) => {
       staffNumber: 'A003',
       firstName: 'Joe',
       lastName: 'Garcia',
-      dateOfBirth: new Date(),
+      dateOfBirth: new Date('1992-12-08').toISOString().split('T')[0],
       gender: 'M',
       profilePic: '/img/image.png',
       access: { level: 1 },
@@ -102,9 +102,9 @@ bcrypt.genSalt(10, (err, salt) => {
         email: 'joe@email.com',
       },
       daysWorked: [{
-        forDate: new Date(),
-        startTime: new Date(),
-        finishTime: new Date(),
+        forDate: new Date().toISOString().split('T')[0],
+        startTime: new Date().toISOString().split('T')[1],
+        finishTime: new Date().toISOString().split('T')[1],
         dailyHours: 8.03,
       }],
       payRate: 10.20,
@@ -116,7 +116,7 @@ bcrypt.genSalt(10, (err, salt) => {
         incomeTax: 50.00,
         taxCode: 'S1250',
         pensionContrib: 100.00,
-        issueDate: new Date(),
+        issueDate: new Date().toISOString().split('T')[0],
       }],
     };
 
