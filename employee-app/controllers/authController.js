@@ -35,7 +35,9 @@ passport.deserializeUser((user, cb) => {
 });
 
 exports.login = (req, res) => {
-  return res.render('login', {});
+  return res.render('login', {
+    css: { url: '/css/login.css' }
+  });
 }
 
 exports.logout = (req, res) => {
