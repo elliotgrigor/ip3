@@ -4,33 +4,33 @@ const LocalStrategy = require('passport-local');
 
 const db = require('./dbController');
 
-passport.use(new LocalStrategy(function verify(username, password, cb) {
+passport.use(new LocalStrategy(function verify(username, password, done) {
   db.employees.findOne(
     { staffNumber: username },
     (err, doc) => {
-      if (err) return cb(err);
-      if (!doc) return cb(null, false, { message: 'Incorrect username or password.' });
+      if (err) return done(err);
+      if (!doc) return done(null, false, { message: 'Incorrect username or password.' });
 
       bcrypt.compare(password, doc.password, (err, result) => {
-        if (err) return cb(err);
+        if (err) return done(err);
         if (!result) {
-          return cb(null, false, { message: 'Incorrect username or password.' });
+          return done(null, false, { message: 'Incorrect username or password.' });
         }
-        return cb(null, doc);
+        return done(null, doc);
       });
     }
   );
 }));
 
-passport.serializeUser((user, cb) => {
+passport.serializeUser((user, done) => {
   process.nextTick(() => {
-    cb(null, { ...user });
+    done(null, { ...user });
   });
 });
 
-passport.deserializeUser((user, cb) => {
+passport.deserializeUser((user, done) => {
   process.nextTick(() => {
-    return cb(null, user);
+    return done(null, user);
   });
 });
 
