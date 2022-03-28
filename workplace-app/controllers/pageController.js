@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-const db = require('./dbController');
+const { rotas } = require('./dbController');
 
 exports.home = (req, res) => {
   res.render('index', { loggedInUser: req.user });
@@ -39,6 +39,53 @@ exports.viewRota = (req, res) => {
 
 exports.addShift = (req, res) => {
   res.render('addShift', {});
+}
+
+exports.editShift = (req, res) => {
+  if (req.method === 'GET') {
+    fetch(`http://localhost:3001/api/v1/get/rota/week/${req.params.weekStart}`)
+      .then(res => res.json())
+      .then(json => {
+        json.rota.staffSchedule.forEach((employee, idx) => {
+          if (employee.staffId === req.params.staffId) {
+            res.render('editShift', {
+              staffMember: {
+                id: req.params.staffId,
+                name: employee.name,
+              },
+              shift: employee[req.params.day],
+              shiftInfo: {
+                weekStart: req.params.weekStart,
+                day: req.params.day,
+                index: idx,
+              },
+              loggedInUser: req.user,
+            });
+          }
+        });
+      })
+      .catch(err => console.log(err));
+  }
+  else if (req.method === 'POST') {
+    const [weekStart, day, staffId] = [
+      req.params.weekStart,
+      req.params.day,
+      req.params.staffId
+    ];
+    const newShift = [req.body.startTime, req.body.endTime];
+    const staffShift = `staffSchedule.${req.body.index}.${day}`;
+
+    rotas.update(
+      { weekStart },
+      { $set: { [staffShift]: newShift } },
+      {},
+      (err, updates, doc) => {
+        if (err) return console.log(err);
+        console.log('Updated:', doc);
+        res.redirect('/rota');
+      }
+    );
+  }
 }
 
 exports.listEmployees = (req, res) => {

@@ -7,37 +7,37 @@ mixin loopShifts(staffSchedule, weekStart)
                 if person.mon
                     a(href=`/rota/${weekStart}/mon/${person.staffId}/edit`)= person.mon 
                 else 
-                    a(href=`/rota/${weekStart}/mon/${person.staffId}/add`) ----
+                    a(href=`/rota/${weekStart}/mon/${person.staffId}/edit`) ----
             td 
                 if person.tue
                     a(href=`/rota/${weekStart}/tue/${person.staffId}/edit`)= person.tue
                 else 
-                    a(href=`/rota/${weekStart}/tue/${person.staffId}/add`) ----
+                    a(href=`/rota/${weekStart}/tue/${person.staffId}/edit`) ----
             td 
                 if person.wed
                     a(href=`/rota/${weekStart}/wed/${person.staffId}/edit`)= person.wed 
                 else 
-                    a(href=`/rota/${weekStart}/wed/${person.staffId}/add`) ---- 
+                    a(href=`/rota/${weekStart}/wed/${person.staffId}/edit`) ---- 
             td 
                 if person.thu
                     a(href=`/rota/${weekStart}/thu/${person.staffId}/edit`)= person.thu
                 else 
-                    a(href=`/rota/${weekStart}/thu/${person.staffId}/add`) ----
+                    a(href=`/rota/${weekStart}/thu/${person.staffId}/edit`) ----
             td 
                 if person.fri
                     a(href=`/rota/${weekStart}/fri/${person.staffId}/edit`)= person.fri 
                 else 
-                    a(href=`/rota/${weekStart}/fri/${person.staffId}/add`) ---- 
+                    a(href=`/rota/${weekStart}/fri/${person.staffId}/edit`) ---- 
             td 
                 if person.sat
                     a(href=`/rota/${weekStart}/sat/${person.staffId}/edit`)= person.sat 
                 else 
-                    a(href=`/rota/${weekStart}/sat/${person.staffId}/add`) ----
+                    a(href=`/rota/${weekStart}/sat/${person.staffId}/edit`) ----
             td 
                 if person.sun
                     a(href=`/rota/${weekStart}/sun/${person.staffId}/edit`)= person.sun
                 else 
-                    a(href=`/rota/${weekStart}/sun/${person.staffId}/add`) ----
+                    a(href=`/rota/${weekStart}/sun/${person.staffId}/edit`) ----
 
 include includes/header.pug
 div#page-container 

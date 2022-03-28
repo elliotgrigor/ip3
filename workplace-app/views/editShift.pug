@@ -1,11 +1,6 @@
 //Same page as addShift but the drop down list auto populates with the user whos shift is being edited
 //The drop down list is also disabled
 
-mixin employeesDropDownOptions(theEmployees)
-    each employee in theEmployees
-        -let lowerName = employee.firstName.toLowerCase();
-        option(value=`${lowerName}`)= employee.firstName + " " + employee.lastName
-
 include includes/header.pug
 div#page-container 
     include includes/nav
@@ -14,16 +9,21 @@ div#page-container
             div(class="title-text-box blue-title-text-box" style="padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;").
                 Edit Shift **add date for day**
         div(class="scroll-flex-row-container centre-flex-row-items" style="margin-top: var(--medium-px)")
-            form(class="vertical-form")
+            form(class="vertical-form" action=`/rota/${shiftInfo.weekStart}/${shiftInfo.day}/${staffMember.id}/edit` method="POST")
                 div(style="height: 320px")
                     label(for="firstName") Employee 
                     label(for="startTime") Start Time
                     label(for="endTime") End Time
                 div(style="width: 15vw; min-width: 150px; height: 310px")   
                     select(name="employees" id="employees" disabled)
-                        option(selected="selected") #{passedInUser.firstName + " " + passedInUser.lastName} 
-                    input(type="time" name="startTime" placeholder="--:--") 
-                    input(type="time" name="endTime" placeholder="--:--") 
+                        option(selected="selected") #{staffMember.name}
+                    input(type="hidden" name="index" value=`${shiftInfo.index}`)
+                    if shift
+                        input(type="text" name="startTime" placeholder=`${shift[0]}`) 
+                        input(type="text" name="endTime" placeholder=`${shift[1]}`)
+                    else
+                        input(type="text" name="startTime" placeholder="")
+                        input(type="text" name="endTime" placeholder="")
                 div 
                     input(class="primary-button" type="submit" value="Update")
                     a(class="secondary-button") Cancel
