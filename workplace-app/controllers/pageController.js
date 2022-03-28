@@ -79,9 +79,9 @@ exports.editShift = (req, res) => {
       { weekStart },
       { $set: { [staffShift]: newShift } },
       {},
-      (err, updates, doc) => {
+      (err, changed) => {
         if (err) return console.log(err);
-        console.log('Updated:', doc);
+        console.log('Updated:', changed);
         res.redirect('/rota');
       }
     );
