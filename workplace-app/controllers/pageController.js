@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-const { rotas } = require('./dbController');
+const { employees, rotas } = require('./dbController');
 
 exports.home = (req, res) => {
   res.render('index', { loggedInUser: req.user });
@@ -17,7 +17,90 @@ exports.editProfile = (req, res) => {
 }
 
 exports.timeClock = (req, res) => {
-  res.render('timeClock', { loggedInUser: req.user });
+  if (req.method === 'GET') {
+    const staffNumber = req.user.staffNumber;
+    let newShift;
+
+    employees.findOne(
+      { staffNumber },
+      { 'daysWorked': 1 },
+      (err, doc) => {
+        if (err) return console.log(err);
+        
+        const lastElement = doc.daysWorked[doc.daysWorked.length - 1];
+        
+        if (lastElement.finishTime) {
+          newShift = true;
+        }
+
+        res.render('timeClock', {
+          loggedInUser: req.user,
+          newShift,
+        });
+      }
+    );
+  }
+  else if (req.method === 'POST') {
+    const punchType = req.body.punchType;
+    const staffNumber = req.user.staffNumber;
+
+    if (punchType === 'in') {
+      employees.update(
+        { staffNumber },
+        { $push: { daysWorked: {
+          forDate: new Date().toISOString().split('T')[0],
+          startTime: new Date().toISOString().split('T')[1],
+          finishTime: null,
+          dailyHours: null,
+        } } },
+        {},
+        (err, changes) => {
+          if (err) return console.log(err);
+          console.log('Added to array:', changes);
+          res.redirect('/timeClock');
+        }
+      );
+    }
+    else if (punchType === 'out') {
+      let lastIndex;
+      let startTime;
+
+      employees.findOne(
+        { staffNumber },
+        { 'daysWorked': 1 },
+        (err, doc) => {
+          if (err) return console.log(err);
+          lastIndex = doc.daysWorked.length - 1;
+          startTime = doc.daysWorked[lastIndex].startTime;
+
+          const finishTimeQ = `daysWorked.${lastIndex}.finishTime`;
+          const dailyHoursQ = `daysWorked.${lastIndex}.dailyHours`;
+          const finishTime = new Date().toISOString().split('T')[1];
+
+          const currentDate = new Date().toISOString().split('T')[0];
+          const timeBegin = new Date(`${currentDate}T` + startTime);
+          const timeEnd = new Date(`${currentDate}T` + finishTime);
+          const diff = timeEnd - timeBegin;
+          const delta = diff / (1000 * 60 * 60);
+
+          employees.update(
+            { staffNumber },
+            { $set: {
+              [finishTimeQ]: finishTime,
+              [dailyHoursQ]: delta.toFixed(2) }
+            },
+            {},
+            (err, changes) => {
+              if (err) return console.log(err);
+              console.log('Updated:', changes);
+              employees.loadDatabase();
+              res.redirect('/');
+            }
+          );
+        }
+      );
+    }
+  }
 }
 
 exports.payslips = (req, res) => {

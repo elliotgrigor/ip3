@@ -23,6 +23,7 @@ router.get('/employees/:staffNumber/edit', passportAuth, pages.editEmployee);
 router.post('/employees/:staffNumber/edit', passportAuth, pages.editEmployee);
 
 router.get('/timeClock', passportAuth, pages.timeClock);
+router.post('/timeClock', passportAuth, pages.timeClock);
 router.get('/payslips', passportAuth, pages.payslips);
 
 router.get('/rota', passportAuth, pages.viewRota);

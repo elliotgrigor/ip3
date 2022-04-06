@@ -10,9 +10,12 @@ div#page-container
             div(class="title-text-box" style="padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;").
                 Current Time: #{currentTime}
         div(class="punchInButtonContainer flex-row-container centre-flex-row-items")
-            if loggedInUser.lastPunch == "Out"
-                button.punchInButton Punch In
-                //When punched in reroute to home page (?)
-            else
-                button.punchInButton Punch Out 
-                //When punched out reroute to home page (?)
+            form(action="/timeClock" method="POST")
+                if newShift
+                    input(type="hidden" name="punchType" value="in")
+                    input(type="submit" value="Punch In").punchInButton
+                    //When punched in reroute to home page (?)
+                else
+                    input(type="hidden" name="punchType" value="out")
+                    input(type="submit" value="Punch Out").punchInButton
+                    //When punched out reroute to home page (?)
