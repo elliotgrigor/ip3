@@ -21,6 +21,7 @@ router.get('/employees/add', passportAuth, pages.addEmployee);
 router.get('/employees/:staffNumber', passportAuth, pages.viewEmployee);
 router.get('/employees/:staffNumber/edit', passportAuth, pages.editEmployee);
 router.post('/employees/:staffNumber/edit', passportAuth, pages.editEmployee);
+router.get('/employees/:staffNumber/delete', passportAuth, pages.removeEmployee);
 
 router.get('/timeClock', passportAuth, pages.timeClock);
 router.post('/timeClock', passportAuth, pages.timeClock);

@@ -182,6 +182,8 @@ exports.listEmployees = (req, res) => {
         });
       })
       .catch(err => console.log(err));
+  } else {
+    res.redirect('/');
   }
 }
 
@@ -208,7 +210,9 @@ exports.viewEmployee = (req, res) => {
 }
 
 exports.addEmployee = (req, res) => {
-  res.render('addEmployee', {});
+  res.render('addEmployee', {
+    loggedInUser: req.user,
+  });
 }
 
 exports.editEmployee = (req, res) => {
@@ -223,4 +227,16 @@ exports.editEmployee = (req, res) => {
       })
       .catch(err => console.log(err));
   }
+}
+
+exports.removeEmployee = (req, res) => {
+  employees.remove(
+    { staffNumber: req.params.staffNumber },
+    {},
+    (err, numDelted) => {
+      if (err) return console.log(err);
+      console.log('Deleted:', numDelted);
+      res.redirect('/employees');
+    }
+  );
 }
