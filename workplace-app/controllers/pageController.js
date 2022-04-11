@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const bcrypt = require('bcrypt');
 
 const { employees, rotas } = require('./dbController');
 
@@ -29,7 +30,9 @@ exports.timeClock = (req, res) => {
         
         const lastElement = doc.daysWorked[doc.daysWorked.length - 1];
         
-        if (lastElement.finishTime) {
+        if (doc.daysWorked.length === 0) {
+          newShift = true;
+        } else if (lastElement.finishTime) {
           newShift = true;
         }
 
@@ -108,8 +111,14 @@ exports.payslips = (req, res) => {
 }
 
 exports.viewRota = (req, res) => {
-  // fetch(`http://localhost:3001/api/v1/get/rota/week/${req.params.weekStart}`)
-  fetch(`http://localhost:3001/api/v1/get/rota/week/2022-04-04`)
+  const currentDate = new Date();
+  const currentDay = currentDate.getDay();
+  let nearestMon = currentDate - ((currentDay - 1) * 24 * 60 * 60 * 1000);
+  // ^^^ THIS IS BORKED FOR SUNDAYS ^^^
+  nearestMon = new Date(nearestMon).toISOString().split('T')[0];
+
+  // fetch(`http://localhost:3001/api/v1/get/rota/week/2022-04-04`)
+  fetch(`http://localhost:3001/api/v1/get/rota/week/${nearestMon}`)
     .then(res => res.json())
     .then(json => {
       res.render('rota', {
@@ -210,9 +219,61 @@ exports.viewEmployee = (req, res) => {
 }
 
 exports.addEmployee = (req, res) => {
-  res.render('addEmployee', {
-    loggedInUser: req.user,
-  });
+  if (req.method === 'GET') {
+    res.render('addEmployee', {
+      loggedInUser: req.user,
+    });
+  }
+  else if (req.method === 'POST') {
+    let payRate = null;
+
+    switch (req.body.employeeType) {
+      case ('1'):
+        payRate = 8.95;
+        break;
+      case ('2'):
+        payRate = 10.15;
+        break;
+      case ('3'):
+        payRate = 12.80;
+        break;
+    }
+
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash('nonce', salt, (err, hash) => {
+        const newEmployee = {
+          staffNumber: req.body.staffNo,
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          dateOfBirth: req.body.birthDate,
+          gender: req.body.gender,
+          access: { level: parseInt(req.body.employeeType) },
+          password: hash,
+          contact: {
+            address: {
+              houseNumber: req.body.houseNo,
+              street: req.body.street,
+              postCode: req.body.postCode,
+              city: req.body.city,
+            },
+            phone: req.body.phone,
+            email: req.body.email,
+          },
+          daysWorked: [],
+          payRate,
+          natInsNumber: req.body.ni,
+          payslips: [],
+        };
+
+        employees.insert(newEmployee, (err, doc) => {
+          if (err) return console.log(err);
+          console.log('Inserted:', doc);
+          res.redirect('/employees');
+        });
+      });
+    });
+
+  }
 }
 
 exports.editEmployee = (req, res) => {

@@ -18,6 +18,7 @@ router.post('/profile/edit', passportAuth, pages.editProfile);
 
 router.get('/employees', passportAuth, pages.listEmployees);
 router.get('/employees/add', passportAuth, pages.addEmployee);
+router.post('/employees/add', passportAuth, pages.addEmployee);
 router.get('/employees/:staffNumber', passportAuth, pages.viewEmployee);
 router.get('/employees/:staffNumber/edit', passportAuth, pages.editEmployee);
 router.post('/employees/:staffNumber/edit', passportAuth, pages.editEmployee);
