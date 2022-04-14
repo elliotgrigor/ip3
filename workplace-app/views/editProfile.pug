@@ -8,7 +8,7 @@ div#page-container
             div(class="title-text-box blue-title-text-box" style="padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;").
                 Edit Details
         div(class="scroll-flex-row-container centre-flex-row-items" style="margin-top: var(--medium-px)")
-            form(class="emp-form")
+            form(class="emp-form" action="/profile/edit" method="POST")
                 div(class="emp-form__item")
                     label(for="firstName" class="emp-form__label") First Name 
                     input(type="text" class="emp-form__input" name="firstName" id="firstname" value=`${loggedInUser.firstName}`)
