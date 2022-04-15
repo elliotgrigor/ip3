@@ -12,8 +12,30 @@ exports.profile = (req, res) => {
 }
 
 exports.editProfile = (req, res) => {
-  if (req.method == 'GET') {
+  if (req.method === 'GET') {
     res.render('editProfile', { loggedInUser: req.user });
+  }
+  else if (req.method === 'POST') {
+    employees.update(
+      { staffNumber: req.user.staffNumber },
+      { $set: {
+        'firstName': req.body.firstName,
+        'lastName': req.body.lastName,
+        'gender': req.body.gender,
+        'contact.address.houseNumber': req.body.houseNo,
+        'contact.address.street': req.body.street,
+        'contact.address.postCode': req.body.postCode,
+        'contact.address.city': req.body.city,
+        'contact.phone': req.body.phone,
+        'contact.email': req.body.email,
+      } },
+      { upsert: true },
+      (err, numReplaced) => {
+        if (err) return console.log(err);
+        console.log(numReplaced);
+        res.redirect('/logout');
+      }
+    );
   }
 }
 
@@ -96,7 +118,6 @@ exports.timeClock = (req, res) => {
             (err, changes) => {
               if (err) return console.log(err);
               console.log('Updated:', changes);
-              employees.loadDatabase();
               res.redirect('/');
             }
           );
@@ -287,6 +308,30 @@ exports.editEmployee = (req, res) => {
         });
       })
       .catch(err => console.log(err));
+  }
+  else if(req.method === 'POST') {
+    employees.update(
+      { staffNumber: req.params.staffNumber },
+      { $set: {
+        'firstName': req.body.firstName,
+        'lastName': req.body.lastName,
+        'gender': req.body.gender,
+        'access.level': parseInt(req.body.employeeType),
+        'contact.address.houseNumber': req.body.houseNo,
+        'contact.address.street': req.body.street,
+        'contact.address.postCode': req.body.postCode,
+        'contact.address.city': req.body.city,
+        'contact.phone': req.body.phone,
+        'contact.email': req.body.email,
+      } },
+      { upsert: true },
+      (err, numReplaced, upsert) => {
+        if (err) return console.log(err);
+        console.log(numReplaced);
+        console.log(upsert); 
+        res.redirect('/employees');
+      }
+    );
   }
 }
 

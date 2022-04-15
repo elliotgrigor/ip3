@@ -19,17 +19,17 @@ div#page-container
                     label(for="gender" class="emp-form__label") Gender
                     select(class="emp-form__select" name="gender" id="gender")
                         if loggedInUser.gender == 'F'
-                            option(value="f" selected="selected") Female
-                            option(value="m") Male
-                            option(value="o") Other
+                            option(value="F" selected="selected") Female
+                            option(value="M") Male
+                            option(value="O") Other
                         if loggedInUser.gender == 'M'
-                            option(value="f") Female
-                            option(value="m" selected="selected") Male
-                            option(value="o") Other
+                            option(value="F") Female
+                            option(value="M" selected="selected") Male
+                            option(value="O") Other
                         if loggedInUser.gender == 'O'
-                            option(value="f") Female
-                            option(value="m") Male
-                            option(value="o" selected="selected") Other
+                            option(value="F") Female
+                            option(value="M") Male
+                            option(value="O" selected="selected") Other
                 div(class="emp-form__item")
                     label(for="phone" class="emp-form__label") Phone Number
                     input(type="text" class="emp-form__input" name="phone" id="phone" value=`${loggedInUser.contact.phone}`)

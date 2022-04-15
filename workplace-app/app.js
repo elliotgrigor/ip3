@@ -10,6 +10,7 @@ const routes = require('./routes/pageRoutes');
 const auth = require('./routes/authRoutes');
 
 const { passportAuth } = require('./middleware/passport');
+const { loadDb } = require('./middleware/loadDb');
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
@@ -23,6 +24,7 @@ app.use(session({
 }));
 app.use(passport.authenticate('session'));
 
+app.use(loadDb);
 app.use('/', auth);
 app.use(passportAuth);
 app.use('/', routes);
