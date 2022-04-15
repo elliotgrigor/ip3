@@ -3,34 +3,27 @@ const router = express.Router();
 
 const pages = require('../controllers/pageController');
 
-const passportAuth = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect('/login');
-}
+router.get('/', pages.home);
 
-router.get('/', passportAuth, pages.home);
+router.get('/profile', pages.profile);
+router.get('/profile/edit', pages.editProfile);
+router.post('/profile/edit', pages.editProfile);
 
-router.get('/profile', passportAuth, pages.profile);
-router.get('/profile/edit', passportAuth, pages.editProfile);
-router.post('/profile/edit', passportAuth, pages.editProfile);
+router.get('/employees', pages.listEmployees);
+router.get('/employees/add', pages.addEmployee);
+router.post('/employees/add', pages.addEmployee);
+router.get('/employees/:staffNumber', pages.viewEmployee);
+router.get('/employees/:staffNumber/edit', pages.editEmployee);
+router.post('/employees/:staffNumber/edit', pages.editEmployee);
+router.get('/employees/:staffNumber/delete', pages.removeEmployee);
 
-router.get('/employees', passportAuth, pages.listEmployees);
-router.get('/employees/add', passportAuth, pages.addEmployee);
-router.post('/employees/add', passportAuth, pages.addEmployee);
-router.get('/employees/:staffNumber', passportAuth, pages.viewEmployee);
-router.get('/employees/:staffNumber/edit', passportAuth, pages.editEmployee);
-router.post('/employees/:staffNumber/edit', passportAuth, pages.editEmployee);
-router.get('/employees/:staffNumber/delete', passportAuth, pages.removeEmployee);
+router.get('/timeClock', pages.timeClock);
+router.post('/timeClock', pages.timeClock);
+router.get('/payslips', pages.payslips);
 
-router.get('/timeClock', passportAuth, pages.timeClock);
-router.post('/timeClock', passportAuth, pages.timeClock);
-router.get('/payslips', passportAuth, pages.payslips);
-
-router.get('/rota', passportAuth, pages.viewRota);
-router.get('/rota/:weekStart/:day/:staffId/edit', passportAuth, pages.editShift);
-router.post('/rota/:weekStart/:day/:staffId/edit', passportAuth, pages.editShift);
-router.get('/rota/add-shift', passportAuth, pages.addShift);
+router.get('/rota', pages.viewRota);
+router.get('/rota/:weekStart/:day/:staffId/edit', pages.editShift);
+router.post('/rota/:weekStart/:day/:staffId/edit', pages.editShift);
+router.get('/rota/add-shift', pages.addShift);
 
 module.exports = router;
