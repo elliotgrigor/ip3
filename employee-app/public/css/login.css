@@ -19,10 +19,12 @@
   justify-content: center;
 }
 .login__img {
-  transform: translateY(-8.5rem);
+  width: 100px;
+  height: 100px;
+  transform: translateY(-8.3rem);
 }
 .login__form {
-  transform: translateY(1.2rem);
+  transform: translateY(-1rem);
 }
 .login__formgroup {
   display: flex;
@@ -39,11 +41,12 @@
   padding: 0.5rem;
 }
 .login__button {
-  border: 1px solid blueviolet;
+  border: 1px solid #5F8DD3;
   background: #fff;
   padding: 10px 20px;
 }
 .login__button:hover {
-  background: blueviolet;
+  cursor: pointer;
+  background: #5F8DD3;
   color: white;
 }
