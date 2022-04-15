@@ -8,16 +8,13 @@ div#page-container
             div(class="title-text-box blue-title-text-box" style="padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;").
                 Edit Details
         div(class="scroll-flex-row-container centre-flex-row-items" style="margin-top: var(--medium-px)")
-            form(class="emp-form")
+            form(class="emp-form" action=`/employees/${passedInUser.staffNumber}/edit` method="POST")
                 div(class="emp-form__item")
-                    label(for="firstname" class="emp-form__label") First Name 
-                    input(type="text" class="emp-form__input" name="firstname" id="firstname" value=`${passedInUser.firstName}`)
+                    label(for="firstName" class="emp-form__label") First Name 
+                    input(type="text" class="emp-form__input" name="firstName" id="firstname" value=`${passedInUser.firstName}`)
                 div(class="emp-form__item")
-                    label(for="lastname" class="emp-form__label") Last Name 
-                    input(type="text" class="emp-form__input" name="lastname" id="lastname" value=`${passedInUser.lastName}`)
-                div(class="emp-form__item")
-                    label(for="birthdate" class="emp-form__label") Date of Birth
-                    input(type="text" onfocus="(this.type='date')" class="emp-form__input" name="birthdate" id="birthdate" value=`${passedInUser.dateOfBirth}`)
+                    label(for="lastName" class="emp-form__label") Last Name 
+                    input(type="text" class="emp-form__input" name="lastName" id="lastname" value=`${passedInUser.lastName}`)
                 div(class="emp-form__item")
                     label(for="gender" class="emp-form__label") Gender
                     select(class="emp-form__select" name="gender" id="gender")
@@ -34,8 +31,8 @@ div#page-container
                             option(value="M") Male
                             option(value="O" selected="selected") Other  
                 div(class="emp-form__item")
-                    label(for="employeetype" class="emp-form__label") Employee Type
-                    select(class="emp-form__select" name="employeetype" id="employeetype")
+                    label(for="employeeType" class="emp-form__label") Employee Type
+                    select(class="emp-form__select" name="employeeType" id="employeetype")
                         if passedInUser.access.level == 1
                             option(value="1" selected="selected") Employee 
                             option(value="2") Middle Manager
@@ -55,14 +52,14 @@ div#page-container
                     label(for="email" class="emp-form__label") Email
                     input(type="text" class="emp-form__input" name="email" id="email" value=`${passedInUser.contact.email}`)
                 div(class="emp-form__item")
-                    label(for="houseno" class="emp-form__label") House Number
-                    input(type="text" class="emp-form__input" name="houseno" id="houseno" value=`${passedInUser.contact.address.houseNumber}`)
+                    label(for="houseNo" class="emp-form__label") House Number
+                    input(type="text" class="emp-form__input" name="houseNo" id="houseno" value=`${passedInUser.contact.address.houseNumber}`)
                 div(class="emp-form__item")
                     label(for="street" class="emp-form__label") Street
                     input(type="text" class="emp-form__input" name="street" id="street" value=`${passedInUser.contact.address.street}`)
                 div(class="emp-form__item")
-                    label(for="postcode" class="emp-form__label") Postcode
-                    input(type="text" class="emp-form__input" name="postcode" id="postcode" value=`${passedInUser.contact.address.postCode}`)
+                    label(for="postCode" class="emp-form__label") Postcode
+                    input(type="text" class="emp-form__input" name="postCode" id="postcode" value=`${passedInUser.contact.address.postCode}`)
                 div(class="emp-form__item")
                     label(for="city" class="emp-form__label") City
                     input(type="text" class="emp-form__input" name="city" id="city" value=`${passedInUser.contact.address.city}`)

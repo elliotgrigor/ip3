@@ -8,16 +8,13 @@ div#page-container
             div(class="title-text-box blue-title-text-box" style="padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;").
                 Edit Details
         div(class="scroll-flex-row-container centre-flex-row-items" style="margin-top: var(--medium-px)")
-            form(class="emp-form")
+            form(class="emp-form" action="/profile/edit" method="POST")
                 div(class="emp-form__item")
-                    label(for="firstname" class="emp-form__label") First Name 
-                    input(type="text" class="emp-form__input" name="firstname" id="firstname" value=`${loggedInUser.firstName}`)
+                    label(for="firstName" class="emp-form__label") First Name 
+                    input(type="text" class="emp-form__input" name="firstName" id="firstname" value=`${loggedInUser.firstName}`)
                 div(class="emp-form__item")
-                    label(for="lastname" class="emp-form__label") Last Name 
-                    input(type="text" class="emp-form__input" name="lastname" id="lastname" value=`${loggedInUser.lastName}`)
-                div(class="emp-form__item")
-                    label(for="birthdate" class="emp-form__label") Date of Birth
-                    input(type="text" onfocus="(this.type='date')" class="emp-form__input" name="birthdate" id="birthdate" value=`${loggedInUser.dateOfBirth}`)
+                    label(for="lastName" class="emp-form__label") Last Name 
+                    input(type="text" class="emp-form__input" name="lastName" id="lastname" value=`${loggedInUser.lastName}`)
                 div(class="emp-form__item")
                     label(for="gender" class="emp-form__label") Gender
                     select(class="emp-form__select" name="gender" id="gender")
@@ -40,14 +37,14 @@ div#page-container
                     label(for="email" class="emp-form__label") Email
                     input(type="text" class="emp-form__input" name="email" id="email" value=`${loggedInUser.contact.email}`)
                 div(class="emp-form__item")
-                    label(for="houseno" class="emp-form__label") House Number
-                    input(type="text" class="emp-form__input" name="houseno" id="houseno" value=`${loggedInUser.contact.address.houseNumber}`)
+                    label(for="houseNo" class="emp-form__label") House Number
+                    input(type="text" class="emp-form__input" name="houseNo" id="houseno" value=`${loggedInUser.contact.address.houseNumber}`)
                 div(class="emp-form__item")
                     label(for="street" class="emp-form__label") Street
                     input(type="text" class="emp-form__input" name="street" id="street" value=`${loggedInUser.contact.address.street}`)
                 div(class="emp-form__item")
-                    label(for="postcode" class="emp-form__label") Postcode
-                    input(type="text" class="emp-form__input" name="postcode" id="postcode" value=`${loggedInUser.contact.address.postCode}`)
+                    label(for="postCode" class="emp-form__label") Postcode
+                    input(type="text" class="emp-form__input" name="postCode" id="postcode" value=`${loggedInUser.contact.address.postCode}`)
                 div(class="emp-form__item")
                     label(for="city" class="emp-form__label") City
                     input(type="text" class="emp-form__input" name="city" id="city" value=`${loggedInUser.contact.address.city}`)
