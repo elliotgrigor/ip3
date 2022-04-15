@@ -1,1 +1,17 @@
-h1 Employee app
+include includes/header
+.navbar-row
+  img.small-image(src='/res/icons/home.svg')
+  img.small-image(src='/res/icons/calendar.svg')
+  img.small-image(src='/res/icons/piggybank.svg')
+  img.small-image(src='/res/icons/person.svg')
+  img.small-image(src='/res/icons/logout.svg')
+.flex-row-wrap-container
+  .dashboard-card-container.centre-flex-row-items
+    img(src='/res/icons/calendar.svg')
+    | Rota
+  .dashboard-card-container.centre-flex-row-items
+    img(src='/res/icons/piggybank.svg')
+    | Payslips
+  .dashboard-card-container.centre-flex-row-items
+    img(src='/res/icons/person.svg')
+    | Profile
