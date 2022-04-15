@@ -298,6 +298,10 @@ exports.addEmployee = (req, res) => {
 }
 
 exports.editEmployee = (req, res) => {
+  if (req.user.access.level < 3) {
+    return res.redirect('/');
+  }
+
   if(req.method == 'GET') {
     fetch(`http://localhost:3001/api/v1/get/employee/id/${req.params.staffNumber}`)
       .then(res => res.json())
@@ -325,10 +329,9 @@ exports.editEmployee = (req, res) => {
         'contact.email': req.body.email,
       } },
       { upsert: true },
-      (err, numReplaced, upsert) => {
+      (err, numReplaced) => {
         if (err) return console.log(err);
         console.log(numReplaced);
-        console.log(upsert); 
         res.redirect('/employees');
       }
     );
