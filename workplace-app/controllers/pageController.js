@@ -294,9 +294,9 @@ exports.removeEmployee = (req, res) => {
   employees.remove(
     { staffNumber: req.params.staffNumber },
     {},
-    (err, numDelted) => {
+    (err, numDeleted) => {
       if (err) return console.log(err);
-      console.log('Deleted:', numDelted);
+      console.log('Deleted:', numDeleted);
       res.redirect('/employees');
     }
   );
