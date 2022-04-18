@@ -8,16 +8,16 @@ mixin loopPayslips(payslips)
                     th Net Pay 
                     th Nat Insurance Pay 
                     th Income Tax
-                    th Tax Code
-                    th Pensions Pay 
+                    th Pensions Pay
+                    th Tax Code 
             tbody 
                 tr 
                     td=payslip.grossPay 
                     td=payslip.netPay 
                     td=payslip.natInsContrib
                     td=payslip.incomeTax 
-                    td=payslip.taxCode 
                     td=payslip.pensionContrib
+                    td=payslip.taxCode
 
 include includes/header.pug
 div#page-container 
