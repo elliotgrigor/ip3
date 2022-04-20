@@ -1,0 +1,31 @@
+include includes/header
+include includes/nav
+.flex-row-container.centre-flex-row-items(style='margin-top: var(--medium-px)')
+  .title-text-box.blue-title-text-box(style='padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;')
+    | My Details
+.scroll-flex-row-container.centre-flex-row-items(style='margin-top: var(--medium-px)')
+  form.vertical-form
+    div(style='height: 500px')
+      label(for='employee-fname') First Name
+      label(for='employee-lname') Last Name
+      label(for='dateOfBirth') Date of Birth
+      label(for='address1') Address Line 1
+      label(for='address2') Address Line 2
+      label(for='town') Town
+      label(for='postcode') Post Code
+      label(for='phone-number') Phone Number
+      label(for='emergency-phone-number') Emergency Phone Number
+      label(for='tfa') Enable Two Factor Authention
+    div(style='width: 15vw; min-width: 150px; height: 500px')
+      input(type='text' name='employee-fname' value='Abby' readonly='')
+      input(type='text' name='employee-lname' value='Wilson' readonly='')
+      input(type='date' name='dateOfBirth' value='29/10/98' readonly='')
+      input(type='text' name='address1' value='Berkeley House' readonly='')
+      input(type='text' name='address2' value='285 Bath Street' readonly='')
+      input(type='text' name='town' value='Glasgow' readonly='')
+      input(type='text' name='postcode' value='G2 4HQ' readonly='')
+      input(type='tel' name='phone-number' value='07990763979' readonly='')
+      input(type='tel' name='emergency-phone-number' value='07990763979' readonly='')
+      input(type="checkbox" name="tfa" value="Yes" readonly = '')
+    div
+      a.primary-button(href='editProfile.html' onclick='') Edit
