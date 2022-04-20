@@ -309,6 +309,11 @@
     height: var(--large-px);
 }
 
+.small-image {
+    height: 48px;
+    width: 48px;
+}
+
 @media screen and (min-width: 1200px) {
     .flex-row-wrap-container > * {
         flex-basis: calc(25% - (var(--medium-px) * 1.25));

@@ -1,23 +1,23 @@
 mixin loopPayslips(payslips)
-    each payslip in payslips
-        table(class="overflow-table safe-centre-table")
-            caption(class="payslip-caption-box")= "For Date Ending: " + payslip.issueDate
-            thead 
-                tr 
-                    th Gross Pay 
-                    th Net Pay 
-                    th Nat Insurance Pay 
-                    th Income Tax
-                    th Pensions Pay
-                    th Tax Code 
-            tbody 
-                tr 
-                    td=payslip.grossPay 
-                    td=payslip.netPay 
-                    td=payslip.natInsContrib
-                    td=payslip.incomeTax 
-                    td=payslip.pensionContrib
-                    td=payslip.taxCode
+  each payslip in payslips
+    table(class="overflow-table safe-centre-table")
+      caption(class="payslip-caption-box")= "For Date Ending: " + payslip.issueDate
+      thead 
+        tr 
+          th Gross Pay 
+          th Net Pay 
+          th Nat Insurance Pay 
+          th Income Tax
+          th Pensions Pay
+          th Tax Code 
+      tbody 
+        tr 
+          td=payslip.grossPay 
+          td=payslip.netPay 
+          td=payslip.natInsContrib
+          td=payslip.incomeTax 
+          td=payslip.pensionContrib
+          td=payslip.taxCode
 
 include includes/header
 include includes/nav

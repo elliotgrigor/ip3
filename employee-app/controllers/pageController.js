@@ -36,7 +36,7 @@ exports.editProfile = (req, res) => {
 }
 
 exports.payslips = (req, res) => {
-  res.render('viewPayslip', {});
+  res.render('viewPayslip', {user: req.user});
 }
 
 exports.viewRota = (req, res) => {
