@@ -6,8 +6,8 @@ include includes/nav
 .scroll-flex-row-container.centre-flex-row-items(style='margin-top: var(--medium-px)')
   form.vertical-form
     div(style='height: 500px')
-      label(for='employee-fname') First Name
-      label(for='employee-lname') Last Name
+      label(for='firstName') First Name
+      label(for='lastName') Last Name
       label(for='dateOfBirth') Date of Birth
       label(for='gender') Gender
       label(for='phoneNo') Phone Number
@@ -17,8 +17,8 @@ include includes/nav
       label(for='postCode') Post Code
       label(for='city') City
     div(style='width: 15vw; min-width: 150px; height: 500px')
-      input(type='text' name='employee-fname' value=`${user.firstName}` readonly='')
-      input(type='text' name='employee-lname' value=`${user.lastName}` readonly='')
+      input(type='text' name='firstName' value=`${user.firstName}` readonly='')
+      input(type='text' name='lastName' value=`${user.lastName}` readonly='')
       input(type='text' name='dateOfBirth' value=`${user.dateOfBirth}` readonly='')
       select(name="gender" id="gender" disabled)
         if user.gender == 'M'
