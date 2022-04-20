@@ -49,4 +49,8 @@ div#page-container
                     label(for="city" class="emp-form__label") City
                     input(type="text" class="emp-form__input" name="city" id="city" value=`${loggedInUser.contact.address.city}`)
                 div(class="emp-form__item")
+                    br
+                    label(class="emp-form__label") You will need to log in again after updating
+                    br
+                div(class="emp-form__item")
                     button(class="emp-form__button" type="submit") Update 
