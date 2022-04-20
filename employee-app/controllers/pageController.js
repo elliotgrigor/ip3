@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 
 exports.home = (req, res) => {
   res.render('index', {});
@@ -39,6 +40,15 @@ exports.payslips = (req, res) => {
   res.render('viewPayslip', {user: req.user});
 }
 
+exports.rotaList = (req, res) => {
+  //
+}
+
 exports.viewRota = (req, res) => {
-  res.render('archiveRota', {});
+  fetch(`http://localhost:3001/api/v1/get/rota/week/${req.params.weekStart}`)
+    .then(res => res.json())
+    .then(json => {
+      res.render('archiveRota', { rota: json.rota });
+    })
+    .catch(err => console.log(err));
 }
