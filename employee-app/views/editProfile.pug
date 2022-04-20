@@ -21,18 +21,24 @@ include includes/nav
       input(type='text' name='lastName' value=`${user.lastName}`)
       input(type='text' name='dateOfBirth' value=`${user.dateOfBirth}` readonly='')
       select(name="gender" id="gender")
-        if user.gender == 'M'
+        if loggedInUser.gender == 'F'
+          option(value="F" selected="selected") Female
           option(value="M") Male
-        if user.gender == 'F'
-          option(value="F") Female
-        if user.gender == 'O'
           option(value="O") Other
-      input(type='text' name='phoneNo' value=`${user.phoneNo}`)
-      input(type='text' name='email' value=`${user.email}`)
-      input(type='text' name='houseNo' value=`${user.houseNo}`)
-      input(type='text' name='street' value=`${user.street}`)
-      input(type='text' name='postCode' value=`${user.postCode}`)
-      input(type='text' name='city' value=`${user.city}`)
+        if loggedInUser.gender == 'M'
+          option(value="F") Female
+          option(value="M" selected="selected") Male
+          option(value="O") Other
+        if loggedInUser.gender == 'O'
+          option(value="F") Female
+          option(value="M") Male
+          option(value="O" selected="selected") Other
+      input(type='text' name='phoneNo' value=`${user.contact.phone}`)
+      input(type='text' name='email' value=`${user.contact.email}`)
+      input(type='text' name='houseNo' value=`${user.contact.address.houseNumber}`)
+      input(type='text' name='street' value=`${user.contact.address.street}`)
+      input(type='text' name='postCode' value=`${user.contact.address.postCode}`)
+      input(type='text' name='city' value=`${user.contact.address.city}`)
     div
       button.primary-button(type="submit") Update
       a.secondary-button(href='staffProfile.html' onclick='') Cancel

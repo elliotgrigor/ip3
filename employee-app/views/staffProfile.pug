@@ -27,11 +27,11 @@ include includes/nav
           option(value="F") Female
         if user.gender == 'O'
           option(value="O") Other
-      input(type='text' name='phoneNo' value=`${user.phoneNo}` readonly='')
-      input(type='text' name='email' value=`${user.email}` readonly='')
-      input(type='text' name='houseNo' value=`${user.houseNo}` readonly='')
-      input(type='text' name='street' value=`${user.street}` readonly='')
-      input(type='text' name='postCode' value=`${user.postCode}` readonly='')
-      input(type='text' name='city' value=`${user.city}` readonly='')
+      input(type='text' name='phoneNo' value=`${user.contact.phone}` readonly='')
+      input(type='text' name='email' value=`${user.contact.email}` readonly='')
+      input(type='text' name='houseNo' value=`${user.contact.address.houseNumber}` readonly='')
+      input(type='text' name='street' value=`${user.contact.address.street}` readonly='')
+      input(type='text' name='postCode' value=`${user.contact.address.postCode}` readonly='')
+      input(type='text' name='city' value=`${user.contact.address.city}` readonly='')
     div
       a.primary-button(href='/profile/edit' onclick='') Edit
