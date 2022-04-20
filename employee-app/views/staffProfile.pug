@@ -21,12 +21,12 @@ include includes/nav
       input(type='text' name='employee-lname' value=`${user.lastName}` readonly='')
       input(type='text' name='dateOfBirth' value=`${user.dateOfBirth}` readonly='')
       select(name="gender" id="gender" disabled)
-                        if user.gender == 'M'
-                            option(value="M") Male
-                        if user.gender == 'F'
-                            option(value="F") Female
-                        if user.gender == 'O'
-                            option(value="O") Other
+        if user.gender == 'M'
+          option(value="M") Male
+        if user.gender == 'F'
+          option(value="F") Female
+        if user.gender == 'O'
+          option(value="O") Other
       input(type='text' name='phoneNo' value=`${user.phoneNo}` readonly='')
       input(type='text' name='email' value=`${user.email}` readonly='')
       input(type='text' name='houseNo' value=`${user.houseNo}` readonly='')

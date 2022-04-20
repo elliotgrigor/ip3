@@ -9,22 +9,30 @@ include includes/nav
       label(for='employee-fname') First Name
       label(for='employee-lname') Last Name
       label(for='dateOfBirth') Date of Birth
-      label(for='address1') Address Line 1
-      label(for='address2') Address Line 2
-      label(for='town') Town
-      label(for='postcode') Post Code
-      label(for='phone-number') Phone Number
-      label(for='emergency-phone-number') Emergency Phone Number
+      label(for='gender') Gender
+      label(for='phoneNo') Phone Number
+      label(for='email') Email
+      label(for='houseNo') House Number
+      label(for='street') Street
+      label(for='postCode') Post Code
+      label(for='city') City
     div(style='width: 15vw; min-width: 150px; height: 500px')
-      input(type='text' name='employee-fname' value='Abby')
-      input(type='text' name='employee-lname' value='Wilson')
-      input(type='date' name='dateOfBirth' value='29/10/98' readonly='')
-      input(type='text' name='address1' value='Berkeley House')
-      input(type='text' name='address2' value='285 Bath Street')
-      input(type='text' name='town' value='Glasgow')
-      input(type='text' name='postcode' value='G2 4HQ')
-      input(type='tel' name='phone-number' value='07990763979')
-      input(type='tel' name='emergency-phone-number' value='07990763979')
+      input(type='text' name='employee-fname' value=`${user.firstName}`)
+      input(type='text' name='employee-lname' value=`${user.lastName}`)
+      input(type='text' name='dateOfBirth' value=`${user.dateOfBirth}` readonly='')
+      select(name="gender" id="gender" disabled)
+        if user.gender == 'M'
+          option(value="M") Male
+        if user.gender == 'F'
+          option(value="F") Female
+        if user.gender == 'O'
+          option(value="O") Other
+      input(type='text' name='phoneNo' value=`${user.phoneNo}`)
+      input(type='text' name='email' value=`${user.email}`)
+      input(type='text' name='houseNo' value=`${user.houseNo}`)
+      input(type='text' name='street' value=`${user.street}`)
+      input(type='text' name='postCode' value=`${user.postCode}`)
+      input(type='text' name='city' value=`${user.city}`)
     div
       a.primary-button(href='' onclick='') Save
       a.secondary-button(href='staffProfile.html' onclick='') Cancel
