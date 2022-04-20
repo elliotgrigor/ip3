@@ -2,7 +2,7 @@ include includes/header
 include includes/nav
 .flex-row-container.centre-flex-row-items(style='margin-top: var(--medium-px)')
   .title-text-box.blue-title-text-box(style='padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;')
-    | Rota for January
+    | Rota
 .scroll-flex-row-container(style='margin-top: var(--medium-px)')
   table.overflow-table.safe-centre-table
     thead
@@ -11,45 +11,54 @@ include includes/nav
       th Shift
     tbody
       tr
-        td XX/XX/XX
+        td= shiftWeek
         td Monday
-        td
+        if shifts.mon
+          td= shifts.mon
+        else 
+          td
       tr
         td
         td Tuesday
-        td 10:00 - 18:00
+        if shifts.tue
+          td= shifts.tue
+        else 
+          td
       tr
         td
         td Wednesday
-        td 09:00 - 17:00
+        if shifts.wed
+          td= shifts.wed
+        else 
+          td
       tr
         td
         td Thursday
-        td
+        if shifts.thu
+          td= shifts.thu
+        else 
+          td
       tr
         td
         td Friday
-        td 12:00 - 16:30
+        if shifts.fri
+          td= shifts.fri
+        else 
+          td
       tr
         td
         td Saturday
-        td
+        if shifts.sat
+          td= shifts.sat
+        else 
+          td
       tr
         td
         td Sunday
-        td 12:00 - 16:30
-      tr
-        td XX/XX/XX
-        td Monday
-        td 10:00 - 18:00
-      tr
-        td
-        td Tuesday
-        td
-      tr
-        td
-        td Wednesday
-        td 13:00 - 19:30
+        if shifts.sun
+          td= shifts.sun
+        else 
+          td
 .flex-row-container.centre-flex-row-items(style='margin-top: var(--medium-px)')
   a.primary-button(style='margin-left: var(--large-px)')
     | Previous
