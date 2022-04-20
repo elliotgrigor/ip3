@@ -48,7 +48,12 @@ exports.viewRota = (req, res) => {
   fetch(`http://localhost:3001/api/v1/get/rota/week/${req.params.weekStart}`)
     .then(res => res.json())
     .then(json => {
-      res.render('archiveRota', { rota: json.rota });
+      json.rota.staffSchedule.forEach(schedule => {
+        if (schedule.staffId === req.params.staffId) {
+          const shifts = schedule;
+          res.render('archiveRota', { shifts });
+        }
+      });
     })
     .catch(err => console.log(err));
 }
