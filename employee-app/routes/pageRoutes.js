@@ -12,6 +12,6 @@ router.post('/profile/edit', page.editProfile);
 router.get('/payslips', page.payslips);
 
 router.get('/rota', page.rotaList);
-router.get('/rota/:weekStart/:staffId', page.viewRota);
+router.get('/rota/:weekStart', page.viewRota);
 
 module.exports = router;

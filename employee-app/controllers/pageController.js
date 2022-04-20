@@ -49,7 +49,7 @@ exports.viewRota = (req, res) => {
     .then(res => res.json())
     .then(json => {
       json.rota.staffSchedule.forEach(schedule => {
-        if (schedule.staffId === req.params.staffId) {
+        if (schedule.staffId === req.user.staffNumber) {
           const shifts = schedule;
           res.render('archiveRota', { shifts });
         }
