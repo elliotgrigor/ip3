@@ -1,9 +1,31 @@
+mixin loopPayslips(payslips)
+    each payslip in payslips
+        table(class="overflow-table safe-centre-table")
+            caption(class="payslip-caption-box")= "For Date Ending: " + payslip.issueDate
+            thead 
+                tr 
+                    th Gross Pay 
+                    th Net Pay 
+                    th Nat Insurance Pay 
+                    th Income Tax
+                    th Pensions Pay
+                    th Tax Code 
+            tbody 
+                tr 
+                    td=payslip.grossPay 
+                    td=payslip.netPay 
+                    td=payslip.natInsContrib
+                    td=payslip.incomeTax 
+                    td=payslip.pensionContrib
+                    td=payslip.taxCode
+
 include includes/header
 include includes/nav
 .flex-row-container.centre-flex-row-items(style='margin-top: var(--medium-px)')
   .title-text-box.blue-title-text-box(style='padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;')
     | Payslip
-iframe(src='' width='100%' height='500px')
+.scroll-flex-row-container(style='margin-top: var(--medium-px)')
+  +loopPayslips
 .flex-row-container.centre-flex-row-items(style='margin-top: var(--medium-px)')
   a.primary-button(style='margin-left: var(--large-px)')
     | Download
