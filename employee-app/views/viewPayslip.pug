@@ -25,7 +25,7 @@ include includes/nav
   .title-text-box.blue-title-text-box(style='padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;')
     | Payslip
 .scroll-flex-row-container(style='margin-top: var(--medium-px)')
-  +loopPayslips
+  +loopPayslips(user.payslips)
 .flex-row-container.centre-flex-row-items(style='margin-top: var(--medium-px)')
   a.primary-button(style='margin-left: var(--large-px)')
     | Download
