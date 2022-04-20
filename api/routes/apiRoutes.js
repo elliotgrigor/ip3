@@ -8,6 +8,7 @@ router.get('/get/employee/all', employee.getAll);
 router.get('/get/employee/id/:staffNumber', employee.getById);
 router.get('/get/employee/level/:accessLevel', employee.getByLevel);
 
+router.get('/get/rota/all', rota.getAll);
 router.get('/get/rota/week/:weekStart', rota.getByWeek);
 
 module.exports = router;
