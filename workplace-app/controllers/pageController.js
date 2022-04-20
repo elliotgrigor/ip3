@@ -82,7 +82,6 @@ exports.timeClock = (req, res) => {
         (err, changes) => {
           if (err) return console.log(err);
           console.log('Added to array:', changes);
-          res.redirect('/timeClock');
         }
       );
     }
@@ -92,7 +91,7 @@ exports.timeClock = (req, res) => {
 
       employees.findOne(
         { staffNumber },
-        { 'daysWorked': 1 },
+        { 'daysWorked': 1, 'payRate': 1 },
         (err, doc) => {
           if (err) return console.log(err);
           lastIndex = doc.daysWorked.length - 1;
@@ -110,25 +109,44 @@ exports.timeClock = (req, res) => {
 
           employees.update(
             { staffNumber },
-            { $set: {
-              [finishTimeQ]: finishTime,
-              [dailyHoursQ]: delta.toFixed(2) }
+            {
+              $set: {
+                [finishTimeQ]: finishTime,
+                [dailyHoursQ]: delta.toFixed(2),
+              },
+              $push: {
+                payslips: {
+                  grossPay: (delta.toFixed(2) * doc.payRate).toFixed(2),
+                  netPay: 0.00,
+                  natInsContrib: 0.00,
+                  incomeTax: 0.00,
+                  taxCode: 'SBR',
+                  pensionContrib: 0.00,
+                  issueDate: currentDate,
+                },
+              },
             },
             {},
             (err, changes) => {
               if (err) return console.log(err);
               console.log('Updated:', changes);
-              res.redirect('/');
             }
           );
         }
       );
     }
+
+    res.redirect('/timeClock');
   }
 }
 
 exports.payslips = (req, res) => {
-  res.render('payslips', { loggedInUser: req.user });
+  employees.findOne(
+    { staffNumber: req.user.staffNumber },
+    (err, user) => {
+      res.render('payslips', { loggedInUser: user });
+    }
+  );
 }
 
 exports.viewRota = (req, res) => {

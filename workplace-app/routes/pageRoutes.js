@@ -19,6 +19,7 @@ router.get('/employees/:staffNumber/delete', pages.removeEmployee);
 
 router.get('/timeClock', pages.timeClock);
 router.post('/timeClock', pages.timeClock);
+
 router.get('/payslips', pages.payslips);
 
 router.get('/rota', pages.viewRota);
