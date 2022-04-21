@@ -42,16 +42,68 @@ exports.payslipList = (req, res) => {
   res.render('viewPayslip', {user: req.user});
 }
 
-exports.viewPayslip = (req, res) => {
-  //
-}
-
 exports.downloadPayslip = (req, res) => {
-  //
+  fetch(`http://localhost:3001/api/v1/get/employee/id/${req.user.staffNumber}`)
+    .then(res => res.json())
+    .then(json => {
+      json.employee.payslips.forEach(payslip => {
+        if (payslip._id === req.params.id) {
+          let payslipFile = `./payslips/payslip_${payslip._id}_${json.employee.staffNumber}.pdf`;
+          let doc = new PDFDocument({
+            size: 'A5',
+            layout: 'landscape',
+            margin: 40,
+          });
+
+          const table = {
+            title: `Payslip for ${payslip.issueDate} for ${json.employee.firstName} ${json.employee.lastName} (${json.employee.natInsNumber})`,
+            headers: [
+              'Issue Date',
+              'Gross Pay',
+              'Net Pay',
+              'NI Contribution',
+              'Income Tax',
+              'Tax Code',
+              'Pension Contribution',
+            ],
+            rows: [
+              [payslip.issueDate,
+               payslip.grossPay,
+               payslip.netPay,
+               payslip.natInsContrib,
+               payslip.incomeTax,
+               payslip.taxCode,
+               payslip.pensionContrib],
+            ],
+          };
+
+          doc.pipe(fs.createWriteStream(`${payslipFile}`));
+          doc.table(table);
+          doc.end();
+
+          setTimeout(() => {
+            res.download(payslipFile);
+          }, 300);
+
+          setTimeout(() => {
+            // delete generated file after 1 min
+            fs.unlink(payslipFile, err => console.log(err));
+          }, 10_000);
+        }
+      });
+
+    })
+    .catch(err => console.log(err));
 }
 
 exports.rotaList = (req, res) => {
-  //
+  fetch('http://localhost:3001/api/v1/get/rota/all')
+    .then(res => res.json())
+    .then(json => {
+      console.log(json);
+      res.render('rotaList', { rotaList: json });
+    })
+    .catch(err => console.log(err));
 }
 
 exports.viewRota = (req, res) => {
