@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const bcrypt = require('bcrypt');
+const { nanoid } = require('nanoid');
 
 const { employees, rotas } = require('./dbController');
 
@@ -116,6 +117,7 @@ exports.timeClock = (req, res) => {
               },
               $push: {
                 payslips: {
+                  _id: nanoid(),
                   grossPay: (delta.toFixed(2) * doc.payRate).toFixed(2),
                   netPay: 0.00,
                   natInsContrib: 0.00,
