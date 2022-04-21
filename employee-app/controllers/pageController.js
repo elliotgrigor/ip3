@@ -38,8 +38,16 @@ exports.editProfile = (req, res) => {
   }
 }
 
-exports.payslips = (req, res) => {
+exports.payslipList = (req, res) => {
   res.render('viewPayslip', {user: req.user});
+}
+
+exports.viewPayslip = (req, res) => {
+  //
+}
+
+exports.downloadPayslip = (req, res) => {
+  //
 }
 
 exports.rotaList = (req, res) => {
