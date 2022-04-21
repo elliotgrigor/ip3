@@ -1,11 +1,11 @@
 mixin loopPayslips(payslips)
-  each payslip in payslips
-    table(class="overflow-table safe-centre-table")
-      thead 
-        tr 
-          th Issue Date 
-          th Download
-      tbody 
+  table(class="overflow-table safe-centre-table")
+    thead 
+      tr 
+        th Issue Date 
+        th Download
+    tbody
+      each payslip in payslips 
         tr 
           td=payslip.issueDate
           td 
