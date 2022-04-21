@@ -13,5 +13,6 @@ router.get('/payslips', page.payslips);
 
 router.get('/rota', page.rotaList);
 router.get('/rota/:weekStart', page.viewRota);
+router.get('/rota/:weekStart/download', page.downloadRota);
 
 module.exports = router;

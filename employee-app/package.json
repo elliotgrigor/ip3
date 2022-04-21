@@ -19,6 +19,7 @@
     "express-session": "^1.17.2",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
+    "pdfkit-table": "^0.1.86",
     "pug": "^3.0.2"
   }
 }
