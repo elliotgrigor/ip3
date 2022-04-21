@@ -1,0 +1,23 @@
+mixin loopShifts(rotas)
+  table(class="overflow-table safe-centre-table")
+    thead 
+      tr 
+        th Week Start
+        th View
+    tbody
+      each rota in rotas 
+        tr 
+          td=rota.weekStart
+          td 
+            a(class="primary-button" href=`rota/${rota.weekStart}`) View
+
+include includes/header
+include includes/nav
+.flex-row-container.centre-flex-row-items(style='margin-top: var(--medium-px)')
+  .title-text-box.blue-title-text-box(style='padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;')
+    | Previous Rotas
+.scroll-flex-row-container(style='margin-top: var(--medium-px)')
+  +loopShifts(rotaList)
+.flex-row-container.centre-flex-row-items(style='margin-top: var(--medium-px)')
+  a.secondary-button(style='margin-left: var(--large-px)')
+    | Return
