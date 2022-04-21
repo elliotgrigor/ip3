@@ -1,23 +1,15 @@
 mixin loopPayslips(payslips)
   each payslip in payslips
     table(class="overflow-table safe-centre-table")
-      caption(class="payslip-caption-box")= "For Date Ending: " + payslip.issueDate
       thead 
         tr 
-          th Gross Pay 
-          th Net Pay 
-          th Nat Insurance Pay 
-          th Income Tax
-          th Pensions Pay
-          th Tax Code 
+          th Issue Date 
+          th Download
       tbody 
         tr 
-          td=payslip.grossPay 
-          td=payslip.netPay 
-          td=payslip.natInsContrib
-          td=payslip.incomeTax 
-          td=payslip.pensionContrib
-          td=payslip.taxCode
+          td=payslip.issueDate
+          td 
+            a(class="primary-button" href=`payslips/${payslip._id}/download`)
 
 include includes/header
 include includes/nav
@@ -27,7 +19,5 @@ include includes/nav
 .scroll-flex-row-container(style='margin-top: var(--medium-px)')
   +loopPayslips(user.payslips)
 .flex-row-container.centre-flex-row-items(style='margin-top: var(--medium-px)')
-  a.primary-button(style='margin-left: var(--large-px)')
-    | Download
   a.secondary-button(style='margin-left: var(--large-px)')
     | Return
