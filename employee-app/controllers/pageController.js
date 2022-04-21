@@ -100,7 +100,6 @@ exports.rotaList = (req, res) => {
   fetch('http://localhost:3001/api/v1/get/rota/all')
     .then(res => res.json())
     .then(json => {
-      console.log(json);
       res.render('rotaList', { rotaList: json });
     })
     .catch(err => console.log(err));
@@ -113,7 +112,11 @@ exports.viewRota = (req, res) => {
       json.rota.staffSchedule.forEach(schedule => {
         if (schedule.staffId === req.user.staffNumber) {
           const shifts = schedule;
-          res.render('archiveRota', { shifts });
+          console.log(json.rota.weekStart);
+          res.render('archiveRota', {
+            shifts,
+            weekStart: json.rota.weekStart,
+          });
         }
       });
     })
