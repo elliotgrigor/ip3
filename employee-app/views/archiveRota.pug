@@ -6,61 +6,51 @@ include includes/nav
 .scroll-flex-row-container(style='margin-top: var(--medium-px)')
   table.overflow-table.safe-centre-table
     thead
-      th Week Beginning
       th Day
       th Shift
     tbody
       tr
-        td= shiftWeek
         td Monday
         if shifts.mon
           td= shifts.mon
         else 
           td
       tr
-        td
         td Tuesday
         if shifts.tue
           td= shifts.tue
         else 
           td
       tr
-        td
         td Wednesday
         if shifts.wed
           td= shifts.wed
         else 
           td
       tr
-        td
         td Thursday
         if shifts.thu
           td= shifts.thu
         else 
           td
       tr
-        td
         td Friday
         if shifts.fri
           td= shifts.fri
         else 
           td
       tr
-        td
         td Saturday
         if shifts.sat
           td= shifts.sat
         else 
           td
       tr
-        td
         td Sunday
         if shifts.sun
           td= shifts.sun
         else 
           td
 .flex-row-container.centre-flex-row-items(style='margin-top: var(--medium-px)')
-  a.primary-button(style='margin-left: var(--large-px)')
-    | Previous
-  a.primary-button(style='margin-left: var(--large-px)')
-    | Next
+  a.primary-button(href=`/rota/${shifts.weekStart}/download`)
+    | Download
