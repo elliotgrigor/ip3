@@ -62,3 +62,6 @@ div#page-container
                     tbody 
                         //Need to pass in the rota for the week 
                         +loopShifts(rota.staffSchedule, rota.weekStart)
+                        tr 
+                            td 
+                                a(href="/rota/add-shift") Add Employee
