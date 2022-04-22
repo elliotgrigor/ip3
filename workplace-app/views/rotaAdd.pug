@@ -1,6 +1,6 @@
 mixin loopEmployees(employeesIn)
     each employee in employeesIn 
-        option(value=`${employee.firstName} ${employee.lastName}`)= employee.fistName + " " + employee.lastName
+        option(value=`${employee.staffNumber}`)= employee.fistName + " " + employee.lastName
 
 include includes/header.pug
 div#page-container 
