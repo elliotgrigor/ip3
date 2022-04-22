@@ -1,16 +1,16 @@
 mixin loopPayslips(payslips)
-    each payslip in payslips
-        table(class="rota-table")
-            caption(class="payslip-caption-box")= "For Date Ending: " + payslip.issueDate
-            thead 
-                tr 
-                    th Gross Pay 
-                    th Net Pay 
-                    th Nat Insurance Pay 
-                    th Income Tax
-                    th Pensions Pay
-                    th Tax Code 
-            tbody 
+    table(class="rota-table")
+        caption(class="payslip-caption-box")= "For Date Ending: " + payslip.issueDate
+        thead 
+            tr 
+                th Gross Pay 
+                th Net Pay 
+                th Nat Insurance Pay 
+                th Income Tax
+                th Pensions Pay
+                th Tax Code 
+        tbody 
+            each payslip in payslips
                 tr 
                     td=payslip.grossPay 
                     td=payslip.netPay 
