@@ -170,6 +170,15 @@ exports.viewRota = (req, res) => {
     .catch(err => console.log(err));
 }
 
+exports.addSchedule = (req, res) => {
+  if (req.method === 'GET') {
+    res.render('addSchedule', {});
+  }
+  else if (req.method === 'POST') {
+    //
+  }
+}
+
 exports.addShift = (req, res) => {
   res.render('addShift', {});
 }
