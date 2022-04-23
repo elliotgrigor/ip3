@@ -21,15 +21,15 @@ include includes/nav
       input(type='text' name='lastName' value=`${user.lastName}`)
       input(type='text' name='dateOfBirth' value=`${user.dateOfBirth}` readonly='')
       select(name="gender" id="gender")
-        if loggedInUser.gender == 'F'
+        if user.gender == 'F'
           option(value="F" selected="selected") Female
           option(value="M") Male
           option(value="O") Other
-        if loggedInUser.gender == 'M'
+        if user.gender == 'M'
           option(value="F") Female
           option(value="M" selected="selected") Male
           option(value="O") Other
-        if loggedInUser.gender == 'O'
+        if user.gender == 'O'
           option(value="F") Female
           option(value="M") Male
           option(value="O" selected="selected") Other
