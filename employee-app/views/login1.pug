@@ -1,0 +1,15 @@
+include includes/header.pug
+
+div.login-viewport
+  img.login-logo(src="/res/icons/logo-blue.png")
+
+  form.login-form(action="/login" method="post")
+    div.login-form-group
+      label.login-form-label(for="username") Staff ID
+      input.login-form-input(type="text" name="username")
+
+    div.login-form-group
+      label.login-form-label(for="username") Password
+      input.login-form-input(type="password" name="password")
+
+    input.login-form-submit(type="submit" value="Log In")
