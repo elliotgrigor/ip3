@@ -2,6 +2,8 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 const PDFDocument = require('pdfkit-table');
 
+const { employees } = require('./dbController');
+
 exports.home = (req, res) => {
   res.render('index', {});
 };
