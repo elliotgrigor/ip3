@@ -151,20 +151,22 @@ exports.payslips = (req, res) => {
   );
 }
 
-exports.viewRota = (req, res) => {
+function nearestMonday() {
+  let nearestMonday;
   const currentDate = new Date();
   const currentDay = currentDate.getDay();
-  let nearestMon;
 
   if (currentDay === 0) {
-    nearestMon = currentDate.getTime() + (24 * 60 * 60 * 1000);
+    nearestMonday = currentDate.getTime() + (24 * 60 * 60 * 1000);
   } else {
-    nearestMon = currentDate - ((currentDay - 1) * 24 * 60 * 60 * 1000);
+    nearestMonday = currentDate - ((currentDay - 1) * 24 * 60 * 60 * 1000);
   }
 
-  nearestMon = new Date(nearestMon).toISOString().split('T')[0];
+  return new Date(nearestMonday).toISOString().split('T')[0];
+}
 
-  fetch(`http://localhost:3001/api/v1/get/rota/week/${nearestMon}`)
+exports.viewRota = (req, res) => {
+  fetch(`http://localhost:3001/api/v1/get/rota/week/${nearestMonday()}`)
     .then(res => res.json())
     .then(json => {
       res.render('rota', {
@@ -177,10 +179,43 @@ exports.viewRota = (req, res) => {
 
 exports.addSchedule = (req, res) => {
   if (req.method === 'GET') {
-    res.render('addSchedule', {});
+    fetch('http://localhost:3001/api/v1/get/employee/all')
+      .then(res => res.json())
+      .then(json => {
+        res.render('rotaAdd', {
+          loggedInUser: req.user,
+          employees: json.employees,
+        });
+      })
+      .catch(err => console.log(err));
   }
   else if (req.method === 'POST') {
-    //
+    let { employee } = req.body;
+
+    fetch(`http://localhost:3001/api/v1/get/employee/id/${employee}`)
+      .then(res => res.json())
+      .then(json => {
+        rotas.update(
+          { weekStart: nearestMonday() },
+          { $push: {
+            staffSchedule: {
+              staffId: employee,
+              name: `${json.employee.firstName} ${json.employee.lastName}`,
+              mon: null,
+              tue: null,
+              wed: null,
+              thu: null,
+              fri: null,
+              sat: null,
+              sun: null,
+            }
+          } },
+          {},
+        );
+
+        res.redirect('/rota');
+      })
+      .catch(err => console.log(err));
   }
 }
 

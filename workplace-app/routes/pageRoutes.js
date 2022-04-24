@@ -24,6 +24,7 @@ router.get('/payslips', pages.payslips);
 
 router.get('/rota', pages.viewRota);
 router.get('/rota/add-schedule', pages.addSchedule);
+router.post('/rota/add-schedule', pages.addSchedule);
 router.get('/rota/:weekStart/:day/:staffId/edit', pages.editShift);
 router.post('/rota/:weekStart/:day/:staffId/edit', pages.editShift);
 

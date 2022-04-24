@@ -1,6 +1,6 @@
 mixin loopEmployees(employeesIn)
     each employee in employeesIn 
-        option(value=`${employee.staffNumber}`)= employee.fistName + " " + employee.lastName
+        option(value=`${employee.staffNumber}`)= employee.firstName + " " + employee.lastName
 
 include includes/header.pug
 div#page-container 
@@ -10,10 +10,10 @@ div#page-container
             div(class="title-text-box blue-title-text-box" style="padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;").
                 Add Employee to Rota
         div(class="scroll-flex-row-container centre-flex-row-items" style="margin-top: var(--medium-px)")
-            form(class="emp-form" action="/rota/add-shift" method="POST")
+            form(class="emp-form" action="/rota/add-schedule" method="POST")
                 div(class="emp-form__item")
                     label(for="employee" class="emp-form__label") Employee
                     select(class="emp-form__select" name="employee" id="employee")
-                        +loopEmployees(employees) 
+                        +loopEmployees(employees)
                 div(class="emp-form__item")
                     button(class="emp-form__button" type="submit") Add 
