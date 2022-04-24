@@ -28,7 +28,7 @@ div#page-container
             div(class="title-text-box blue-title-text-box" style="padding: var(--medium-px); margin: 0px var(--medium-px) 0px var(--medium-px); hyphens: none;").
                 Payslips
             div(class="centre-flex-row-items" style="margin-top: var(--medium-px)")
-                if payslips
+                if loggedInUser.payslips
                     +loopPayslips(loggedInUser.payslips)
                 else
                     p No payslips
