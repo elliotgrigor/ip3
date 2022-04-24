@@ -154,11 +154,16 @@ exports.payslips = (req, res) => {
 exports.viewRota = (req, res) => {
   const currentDate = new Date();
   const currentDay = currentDate.getDay();
-  let nearestMon = currentDate - ((currentDay - 1) * 24 * 60 * 60 * 1000);
-  // ^^^ THIS IS BORKED FOR SUNDAYS ^^^
+  let nearestMon;
+
+  if (currentDay === 0) {
+    nearestMon = currentDate.getTime() + (24 * 60 * 60 * 1000);
+  } else {
+    nearestMon = currentDate - ((currentDay - 1) * 24 * 60 * 60 * 1000);
+  }
+
   nearestMon = new Date(nearestMon).toISOString().split('T')[0];
 
-  // fetch(`http://localhost:3001/api/v1/get/rota/week/2022-04-04`)
   fetch(`http://localhost:3001/api/v1/get/rota/week/${nearestMon}`)
     .then(res => res.json())
     .then(json => {
