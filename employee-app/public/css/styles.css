@@ -285,6 +285,7 @@
     font-size: var(--x2large-font);
     font-weight: bold;
     font-family: sans-serif;
+    text-decoration: none;
 }
 
 .dashboard-card-container > img {
