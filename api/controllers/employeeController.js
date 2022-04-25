@@ -1,7 +1,7 @@
 const { employees } = require('./dbController.js');
 
 exports.getAll = (req, res) => {
-  employees.find({}, (err, docs) => {
+  employees.find({}, { password: -1 }, (err, docs) => {
     if (err) return console.log(err);
     res.json({ employees: docs });
   });

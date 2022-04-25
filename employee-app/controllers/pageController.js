@@ -41,7 +41,13 @@ exports.editProfile = (req, res) => {
 }
 
 exports.payslipList = (req, res) => {
-  res.render('viewPayslip', {user: req.user});
+  employees.findOne(
+    { staffNumber: req.user.staffNumber },
+    { payslips: 1 },
+    (err, doc) => {
+      res.render('viewPayslip', { payslips: doc.payslips });
+    },
+  );
 }
 
 exports.downloadPayslip = (req, res) => {
@@ -161,7 +167,7 @@ exports.downloadRota = (req, res) => {
           }, 300);
 
           setTimeout(() => {
-            // delete generated file after 1 min
+            // delete generated file after 10 secs
             fs.unlink(rotaFile, err => console.log(err));
           }, 10_000);
         }
