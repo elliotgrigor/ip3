@@ -108,6 +108,12 @@ exports.timeClock = (req, res) => {
           const diff = timeEnd - timeBegin;
           const delta = diff / (1000 * 60 * 60);
 
+          const grossPay = (delta.toFixed(2) * doc.payRate).toFixed(2);
+          const natInsCon = grossPay * 0.05;
+          const incomeTaxCon = grossPay * 0.15;
+          const pensionCon = grossPay * 0.03;
+          const netPayCon = grossPay - natInsCon - incomeTaxCon - pensionCon;
+
           employees.update(
             { staffNumber },
             {
@@ -118,12 +124,12 @@ exports.timeClock = (req, res) => {
               $push: {
                 payslips: {
                   _id: nanoid(),
-                  grossPay: (delta.toFixed(2) * doc.payRate).toFixed(2),
-                  netPay: 0.00,
-                  natInsContrib: 0.00,
-                  incomeTax: 0.00,
-                  taxCode: 'SBR',
-                  pensionContrib: 0.00,
+                  grossPay: grossPay,
+                  netPay: netPayCon.toFixed(2),
+                  natInsContrib: natInsCon.toFixed(2),
+                  incomeTax: incomeTaxCon.toFixed(2),
+                  taxCode: 'S1250',
+                  pensionContrib: pensionCon.toFixed(2),
                   issueDate: currentDate,
                 },
               },
