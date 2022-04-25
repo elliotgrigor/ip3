@@ -83,6 +83,7 @@ exports.timeClock = (req, res) => {
         (err, changes) => {
           if (err) return console.log(err);
           console.log('Added to array:', changes);
+          res.redirect('/timeClock');
         }
       );
     }
@@ -138,13 +139,12 @@ exports.timeClock = (req, res) => {
             (err, changes) => {
               if (err) return console.log(err);
               console.log('Updated:', changes);
+              res.redirect('/timeClock');
             }
           );
         }
       );
     }
-
-    res.redirect('/timeClock');
   }
 }
 
