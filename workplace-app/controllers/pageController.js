@@ -217,9 +217,12 @@ exports.addSchedule = (req, res) => {
             }
           } },
           {},
+          (err, numUpdates) => {
+            if (err) return console.log(err);
+            console.log('Updated:', numUpdates);
+            res.redirect('/rota');
+          }
         );
-
-        res.redirect('/rota');
       })
       .catch(err => console.log(err));
   }
